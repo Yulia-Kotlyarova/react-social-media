@@ -1,7 +1,7 @@
 import React from 'react';
 import './style/App.css';
 import './style/Post.css';
-import m from'./style/Main.module.css';
+import m from'./style/Profile.module.css';
 import astronaut from './img/astronaut.svg';
 
 function Post(props) {

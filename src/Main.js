@@ -1,30 +1,29 @@
 import React from 'react';
 import './style/App.css';
-import m from'./style/Main.module.css';
+
 import Aside from'./Aside.js';
-import Post from'./Post.js';
-import MyPosts from'./MyPosts.js';
-import astronaut from './img/astronaut.svg';
+import Profile from './Profile';
+import Dialog from './Dialog';
+import News from './News';
+import Music from './Music';
+import Settings from './Settings';
+import { Route, BrowserRouter } from 'react-router-dom';
+
 
 function Main() {
   return (
+    <BrowserRouter>
       <div className="container">
         <div className="row">
             <Aside/>
-            <main className="col-8">
-              <div class="person-box">
-                <div class="ava d-flex">
-                  <img src= {astronaut} className={m.ava} alt="ava" />
-                  <p class={m.description}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-                  Porro ratione soluta magnam eum reprehenderit, natus cumque ab necessitatibus tempora 
-                  dolorum fugiat rem, ut architecto! 
-                  Vitae possimus nesciunt ex voluptas. Quos!</p>
-                </div>
-              </div>
-              <MyPosts/>
-            </main>
+            <Route path ="/dialog" component = {Dialog}/>
+            <Route path="/profile" component = {Profile}/>
+            <Route path="/news" component = {News}/>
+            <Route path="/music" component = {Music}/>
+            <Route path="/settings" component = {Settings}/>
         </div>
       </div>
+    </BrowserRouter>
   );
 }
 

@@ -3,14 +3,18 @@ import ReactDOM from 'react-dom';
 import Header from './Header';
 import * as serviceWorker from './serviceWorker';
 import Footer from './Footer';
-import Main from './Main';
+import Profile from './Profile';
+import Main from'./Main.js';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <Header />
-    <Main/>
-    <Footer/>
+
+      <Header />
+      <Main/>
+      <Footer/>
+
   </React.StrictMode>,
   document.getElementById('root')
 );
