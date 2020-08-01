@@ -1,0 +1,49 @@
+body {
+  background-color: #282c34;
+  text-align: center;
+}
+
+a {
+  color: #B0BEC5;
+}
+
+a:hover {
+  color: white;
+}
+.Header-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .Header-logo {
+    animation: Header-logo-spin infinite 60s linear;
+  }
+}
+
+header {
+  height: 50vh;
+  color: white;
+}
+
+@keyframes Header-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.nav-link {
+  color: #B0BEC5;
+}
+
+.nav-link:hover {
+  color: white;
+}
+
+footer {
+  height: 100px;
+}
+
