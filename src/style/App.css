@@ -1,6 +1,7 @@
 body {
   background-color: #282c34;
   text-align: center;
+  color: #B0BEC5
 }
 
 a {
@@ -45,5 +46,12 @@ header {
 
 footer {
   height: 100px;
+  padding-top: 40px;
 }
 
+aside {
+  background-color: #46515756;
+}
+aside ul {
+  margin: 30px 0 0 0;
+}
