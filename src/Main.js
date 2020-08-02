@@ -16,7 +16,7 @@ function Main() {
       <div className="container">
         <div className="row">
             <Aside/>
-            <Route path ="/dialog" component = {Dialog}/>
+            <Route exact path ="/dialog" component = {Dialog}/>
             <Route path="/profile" component = {Profile}/>
             <Route path="/news" component = {News}/>
             <Route path="/music" component = {Music}/>

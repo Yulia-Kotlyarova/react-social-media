@@ -10,6 +10,7 @@ a {
 
 a:hover {
   color: white;
+  text-decoration: none;
 }
 .Header-logo {
   height: 40vmin;
@@ -18,7 +19,7 @@ a:hover {
 
 @media (prefers-reduced-motion: no-preference) {
   .Header-logo {
-    animation: Header-logo-spin infinite 60s linear;
+   /* animation: Header-logo-spin infinite 60s linear;*/
   }
 }
 

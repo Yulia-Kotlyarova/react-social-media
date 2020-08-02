@@ -4,20 +4,35 @@ import './style/Dialog.css';
 import m from'./style/Profile.module.css';
 import alien from './img/alien.svg';
 import astronaut from './img/astronaut.svg';
+import { NavLink } from 'react-router-dom';
+import Messages from './Messages.js'
 
 function Dialog() {
   return (
     <section className="col-8">
-      dialog
-      {/* <div class="person-box">
-        <div class="ava d-flex">
-          <img src= {astronaut} className={m.ava} alt="ava" />
-          <p class={m.description}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-          Porro ratione soluta magnam eum reprehenderit, natus cumque ab necessitatibus tempora 
-          dolorum fugiat rem, ut architecto! 
-          Vitae possimus nesciunt ex voluptas. Quos!</p>
+      <div className = "row">
+        <div className = "col-6 dialogs">
+          <ul className="nav flex-column">
+                  <li className = "nav-item dialog-item"> 
+                    <NavLink to = "dialog/Pipetka" class = "active"  activeClassName = "active"> Pipetka </NavLink>
+                  </li>
+                  <li className = "nav-item dialog-item"> 
+                    <NavLink to = "dialog/Kykyshka" class = ""  activeClassName = "active"> Kykyshka </NavLink>
+                  </li>
+                  <li className = "nav-item dialog-item"> 
+                    <NavLink to = "dialog/Senya" class = ""  activeClassName = "active"> Senya </NavLink>
+                  </li>
+                  <li className = "nav-item dialog-item"> 
+                    <NavLink to = "dialog/Fatty Cat" class = ""  activeClassName = "active"> Fatty Cat </NavLink>
+                  </li>
+                  <li className = "nav-item dialog-item"> 
+                    <NavLink to = "dialog/Murrr" class = ""  activeClassName = "active"> Murrr </NavLink>
+                  </li>
+            </ul>
         </div>
-      </div> */}
+        <Messages/>
+      </div>
+
     </section>
   );
 }
