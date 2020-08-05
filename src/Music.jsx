@@ -1,17 +1,17 @@
 import React from 'react';
 import './style/App.css';
 import m from'./style/Profile.module.css';
-import Aside from'./Aside.js';
-import Post from'./Post.js';
-import MyPosts from'./MyPosts.js';
+import Aside from'./Aside.jsx';
+import Post from'./components/Profile/Post.jsx';
+import MyPosts from'./components/Profile/MyPosts.jsx';
 import astronaut from './img/astronaut.svg';
 
-function News() {
+function Music() {
   return (
     <section className="col-8">
-      News
+      Music
     </section>
   );
 }
 
-export default News;
+export default Music;

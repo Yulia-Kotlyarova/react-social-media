@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Header from './Header';
+import Header from './Header.jsx';
 import * as serviceWorker from './serviceWorker';
-import Footer from './Footer';
-import Profile from './Profile';
-import Main from'./Main.js';
+import Footer from './Footer.jsx';
+import Profile from './components/Profile/Profile.jsx';
+import Main from'./Main.jsx';
 import { BrowserRouter, Route } from 'react-router-dom';
 
 

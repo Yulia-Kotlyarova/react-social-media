@@ -1,12 +1,12 @@
 import React from 'react';
 import './style/App.css';
 
-import Aside from'./Aside.js';
-import Profile from './Profile';
-import Dialog from './Dialog';
-import News from './News';
-import Music from './Music';
-import Settings from './Settings';
+import Aside from'./Aside.jsx';
+import Profile from './components/Profile/Profile.jsx';
+import Dialog from './Dialog.jsx';
+import News from './News.jsx';
+import Music from './Music.jsx';
+import Settings from './Settings.jsx';
 import { Route, BrowserRouter } from 'react-router-dom';
 
 
