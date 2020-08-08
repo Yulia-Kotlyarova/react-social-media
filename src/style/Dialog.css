@@ -2,10 +2,21 @@
     color: aquamarine;
 }
 
-.massage-item {
+.massage-item,
+.dialog-item  {
     text-align: left;
+    padding: 10px;
+
+    border: #282c34 2px solid;
+    border-radius: 5px;
+    background-color: #46515756;
 }
 
-.dialog-item {
-    text-align: left;
+
+.dialog-item > a {
+    padding-left: 15px;
+}
+
+.dialogs {
+
 }

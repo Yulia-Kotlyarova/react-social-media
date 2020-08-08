@@ -4,11 +4,12 @@ import MyPosts from'./MyPosts.jsx';
 import ProfileInfo from './ProfileInfo.jsx';
 import astronaut from '../../img/astronaut.svg';
 
-function Profile() {
+
+function Profile(props) {
   return (
     <section className="col-8">
       <ProfileInfo/>
-      <MyPosts/>
+      <MyPosts postData = { props.postData } />
     </section>
   );
 }

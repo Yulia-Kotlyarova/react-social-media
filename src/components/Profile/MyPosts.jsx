@@ -1,20 +1,24 @@
 import React from 'react';
 import Post from'./Post.jsx';
 import alien from '../../img/alien.svg';
-import astronaut from '../../img/astronaut.svg';
 
 import '../../style/App.css';
 
+function MyPosts(props) {
 
-function MyPosts() {
+  let PostItem = props.postData.map(el => <Post message = {el.message} ava = {alien} likes = {el.likeCount}/> );
+
+
   return (
     <div>
         <div>
             <textarea autoFocus={true}></textarea>
             <button className = "send-btn"> send </button>
         </div> 
-    <Post message = "Hi! I'm pipetka!" ava = {alien} likeCount ='12' />
-    <Post message = "It's my first post."ava = {astronaut} likeCount ='13'/>
+        { PostItem }
+    {/* <Post message = {postData[0].message} ava = {alien} likes = {postData[0].likeCount} />
+    <Post message = {postData[1].message} ava = {astronaut} likes = {postData[1].likeCount}/>
+    <Post message = {postData[2].message} ava = {astronaut} likes = {postData[2].likeCount}/> */}
     </div>
   );
 }

@@ -10,7 +10,7 @@ function Post(props) {
        <img src= {props.ava} className={m.ava} alt="ava" />
        <div className = "post-box-p" >
             <p> {props.message}</p> 
-            <span> like </span>  
+            <span> like: {props.likes} </span>  
         </div> 
     </div>
   );

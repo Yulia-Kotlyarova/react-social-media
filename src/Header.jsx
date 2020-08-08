@@ -7,7 +7,7 @@ function Header() {
     <div className="Header">
       <header className="">
         <div className="container">
-          <div className="row">
+          {/* <div className="row">
             <ul className="col-12 nav justify-content-center">
               <li className = "nav-item"> 
                 <a href = "#" class = "nav-link active"> title</a>
@@ -22,7 +22,7 @@ function Header() {
                 <a href = "#" class = "nav-link"> title</a>
               </li>
             </ul>
-          </div>
+          </div> */}
         </div>
           <img src={logo} className="Header-logo" alt="logo" />
       </header>
