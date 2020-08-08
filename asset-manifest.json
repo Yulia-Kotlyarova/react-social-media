@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/react-social-media/static/css/main.97df01b1.chunk.css",
+    "main.js": "/react-social-media/static/js/main.ddd32667.chunk.js",
+    "main.js.map": "/react-social-media/static/js/main.ddd32667.chunk.js.map",
+    "runtime-main.js": "/react-social-media/static/js/runtime-main.3fb44a4e.js",
+    "runtime-main.js.map": "/react-social-media/static/js/runtime-main.3fb44a4e.js.map",
+    "static/js/2.aec4f7a5.chunk.js": "/react-social-media/static/js/2.aec4f7a5.chunk.js",
+    "static/js/2.aec4f7a5.chunk.js.map": "/react-social-media/static/js/2.aec4f7a5.chunk.js.map",
+    "index.html": "/react-social-media/index.html",
+    "precache-manifest.62e548e5ad3f227b9e56ac73174dfd01.js": "/react-social-media/precache-manifest.62e548e5ad3f227b9e56ac73174dfd01.js",
+    "service-worker.js": "/react-social-media/service-worker.js",
+    "static/css/main.97df01b1.chunk.css.map": "/react-social-media/static/css/main.97df01b1.chunk.css.map",
+    "static/js/2.aec4f7a5.chunk.js.LICENSE.txt": "/react-social-media/static/js/2.aec4f7a5.chunk.js.LICENSE.txt",
+    "static/media/alien.svg": "/react-social-media/static/media/alien.f906da7a.svg",
+    "static/media/angry-monster.svg": "/react-social-media/static/media/angry-monster.eeb2faff.svg",
+    "static/media/astronaut.svg": "/react-social-media/static/media/astronaut.4c14b0af.svg",
+    "static/media/cat-face.svg": "/react-social-media/static/media/cat-face.dff78f24.svg",
+    "static/media/eye-open.svg": "/react-social-media/static/media/eye-open.4c00f870.svg",
+    "static/media/jellyfish.svg": "/react-social-media/static/media/jellyfish.fbc660d0.svg",
+    "static/media/logo.svg": "/react-social-media/static/media/logo.ef572895.svg",
+    "static/media/unity-hand.svg": "/react-social-media/static/media/unity-hand.22bc2664.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3fb44a4e.js",
+    "static/js/2.aec4f7a5.chunk.js",
+    "static/css/main.97df01b1.chunk.css",
+    "static/js/main.ddd32667.chunk.js"
+  ]
+}
