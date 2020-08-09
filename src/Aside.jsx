@@ -2,12 +2,27 @@ import React from 'react';
 import './style/App.css';
 import A from './style/Aside.module.css';
 import { NavLink } from 'react-router-dom';
+import Friends from './Friends';
 
-function Aside() {
+
+
+const AsideLink = (props) => {
+  return <li className = "nav-item"> 
+             <NavLink to = {props.link} class = {A.nav_link} activeClassName = {A.activeLink}> {props.linkName} </NavLink>
+          </li>
+}
+
+function Aside(props) {
+
+  let asideLinks = props.linkData.map(el => <AsideLink link = {el.link} linkName = {el.linkName} id = {el.id}/>);
+
   return (
     <aside className="col-2" >
         <ul className="nav flex-column">
-              <li className = "nav-item"> 
+          { asideLinks }
+
+          <Friends dialogsData = { props.dialogsData }/>
+              {/* <li className = "nav-item"> 
                 <NavLink to = "/profile" class = {A.nav_link} activeClassName = {A.activeLink}> profile </NavLink>
               </li>
               <li className = "nav-item"> 
@@ -21,7 +36,7 @@ function Aside() {
               </li>
               <li className = "nav-item"> 
                 <NavLink to = "/settings" class = {A.nav_link} activeClassName = {A.activeLink}> settings </NavLink>
-              </li>
+              </li> */}
         </ul>
     </aside>
   );

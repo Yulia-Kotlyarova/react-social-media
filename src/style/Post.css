@@ -5,16 +5,7 @@
 .post-box {
     margin: 20px;
     border: 1px solid #b0bec583;
+    border-radius: 4px;
     width: 100%;
 }
 
-textarea {
-    width: 100%;
-    margin: 20px;
-    background-color:#b0bec583 ;
-}
-
-.send-btn {
-    border: none;
-    padding: 3px 15px;
-}

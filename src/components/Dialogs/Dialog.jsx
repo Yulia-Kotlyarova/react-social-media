@@ -4,10 +4,6 @@ import '../../style/Dialog.css';
 import  Messages from './Messages.jsx';
 import { NavLink } from 'react-router-dom';
 
-// import dialogsData from '../../index.js';
-
-
-
 const DialogItem = (props) => {
   let path = "/dialog/" + props.id;
 
@@ -16,10 +12,6 @@ const DialogItem = (props) => {
             <NavLink to={path} activeClassName = "active"> {props.name} </NavLink>
         </li>
 }
-
-
-
-
 
 function Dialog(props) {
 
@@ -38,13 +30,7 @@ function Dialog(props) {
                   <DialogItem name = ' Murrr' id = "5"/> */}
             </ul>
         </div>
-            <div className = "col-6 messages">
-              {/* <ul className="nav flex-column">
-                { messagesItem }
-              </ul> */}
-              <Messages messagesData = { props.messagesData } />
-            </div>
-
+            <Messages messagesData = { props.messagesData } />
       </div>
     </section>
   );

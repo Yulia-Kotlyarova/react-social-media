@@ -6,14 +6,21 @@ import '../../style/App.css';
 
 function MyPosts(props) {
 
-  let PostItem = props.postData.map(el => <Post message = {el.message} ava = {alien} likes = {el.likeCount}/> );
+  const PostItem = props.postData.map(el => <Post message = {el.message} ava = {alien} likes = {el.likeCount}/> );
 
+  const newPost = React.createRef();
+
+  const addPost = () => {
+    let text = newPost.current.value;
+    alert(text);
+  }
 
   return (
     <div>
         <div>
-            <textarea autoFocus={true}></textarea>
-            <button className = "send-btn"> send </button>
+                <textarea ref = { newPost } autoFocus={true}></textarea>
+                <button className = "send-btn" onClick = { addPost } > send </button>
+
         </div> 
         { PostItem }
     {/* <Post message = {postData[0].message} ava = {alien} likes = {postData[0].likeCount} />

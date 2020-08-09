@@ -7,6 +7,7 @@ import Dialog from './components/Dialogs/Dialog.jsx';
 import News from './News.jsx';
 import Music from './Music.jsx';
 import Settings from './Settings.jsx';
+import Friends from './Friends.jsx';
 import { Route, BrowserRouter } from 'react-router-dom';
 
 function Main(props) {
@@ -14,7 +15,7 @@ function Main(props) {
     <BrowserRouter>
       <div className="container">
         <div className="row">
-            <Aside/>
+            <Aside linkData = { props.linkData } dialogsData = {props.dialogsData} />
             {/* <Route exact path ="/dialog" component = {Dialog}/>
             <Route path="/profile" component = {Profile}/> */}
             <Route path ="/dialog" render = { () => <Dialog messagesData = { props.messagesData } dialogsData = {props.dialogsData} /> }/>
@@ -22,6 +23,7 @@ function Main(props) {
             <Route path="/news" component = {News}/>
             <Route path="/music" component = {Music}/>
             <Route path="/settings" component = {Settings}/>
+            {/* <Route path="/friends" render = { () => <Friends dialogsData = {props.dialogsData} /> }/> */}
         </div>
       </div>
     </BrowserRouter>
