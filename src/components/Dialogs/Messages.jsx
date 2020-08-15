@@ -10,15 +10,20 @@ function Messages(props) {
   const newMessage = React.createRef();
 
   const sendMessage = () => {
+    // let text = newMessage.current.value;
+    props.addMessage();
+  }
+
+  const onMessageChange = () => {
     let text = newMessage.current.value;
-    alert(text);
+    props.updateNewMessage(text);
   }
 
   let messagesItem = props.messagesData.map(el => <Message message = {el.message}/>); 
 
   return (
     <div className = "col-6 d-flex flex-column justify-content-between messages">
-      <textarea ref = {newMessage} rows = "5" className = "send-message" autoFocus = {true}> </textarea>
+      <textarea ref = {newMessage} value = { props.newMessageText }  onChange = { onMessageChange } rows = "5" className = "send-message" autoFocus = {true}> </textarea>
       <button className = "send-btn" onClick = { sendMessage } > send</button>
       <ul className="nav flex-column">
         { messagesItem }

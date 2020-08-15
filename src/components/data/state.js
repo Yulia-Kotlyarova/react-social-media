@@ -4,8 +4,8 @@ import jelly from '../../img/jellyfish.svg';
 import unity from '../../img/unity-hand.svg';
 import cat from '../../img/cat-face.svg';
 
-
-let state = {
+let store = {
+  _state: {
 
     linkData: [
       { id: 1, link: "/profile", linkName: "profile"},
@@ -16,25 +16,101 @@ let state = {
       // { id: 6, link: "/friends", linkName: "friends"},
     ],
 
-    messagesData: [
-        {id: '1', message: 'Hi!'},
-        {id: '2', message: 'Pipetka! '},
-        {id: '3', message: 'Pipetka loves you!'},
-      ],
+      dialogsPage: {
+        messagesData: [
+          {id: '1', message: 'Hi!'},
+          {id: '2', message: 'Pipetka! '},
+          {id: '3', message: 'Pipetka loves you!'},
+        ],
 
-      dialogsData: [
-        {id: '1', name: 'Pipetka', ava: `${monster}`},
-        {id: '2', name: 'Kykyshka ', ava: `${eye}`},
-        {id: '3', name: 'Senya', ava: `${jelly}`},
-        {id: '4', name: 'Fatty Cat', ava: `${unity}`},
-        {id: '5', name: 'Murrr', ava: `${cat}`},
-      ],
-      
-      postData: [
-        {id: '1', message: 'Hi! I am pipetka!', likeCount: '12' },
-        {id: '2', message: "It's my first post.", likeCount: '13' },
-        {id: '3', message: 'Pipetka loves you!', likeCount: '69' },
-      ]
+        dialogsData: [
+          {id: '1', name: 'Pipetka', ava: `${monster}`},
+          {id: '2', name: 'Kykyshka ', ava: `${eye}`},
+          {id: '3', name: 'Senya', ava: `${jelly}`},
+          {id: '4', name: 'Fatty Cat', ava: `${unity}`},
+          {id: '5', name: 'Murrr', ava: `${cat}`},
+        ],
+
+        newMessageText: 'how low?'
+
+      },
+
+      profilePage: {
+        postData: [
+          {id: '1', message: 'Hi! I am pipetka!', likeCount: '12' },
+          {id: '2', message: "It's my first post.", likeCount: '13' },
+          {id: '3', message: 'Pipetka loves you!', likeCount: '69' },
+        ],
+
+        newPostText:  'kookooshka'
+      }
+  },
+
+  getState() {
+
+    return this._state;
+  },
+
+  _callSubscriber() {
+    console.log(true);
+  },
+
+  addPost() {
+
+    let post = {
+      id: '4', 
+      message: this._state.profilePage.newPostText,
+      likeCount: '0'
+    };
+  
+    this._state.profilePage.postData.push(post);
+    this._state.profilePage.newPostText = '';
+    this._callSubscriber(this._state);
+  },
+
+  updateNewPost (text) {
+    debugger
+    this._state.profilePage.newPostText = text;
+    this._callSubscriber(this._state);
+  },
+
+  addMessage() {
+    let message = {
+      id: '4',
+      message: this._state.dialogsPage.newMessageText,
+    };
+  
+    this._state.dialogsPage.messagesData.push(message);
+    this._state.dialogsPage.newMessageText = '';
+    this._callSubscriber(this._state);
+  },
+
+  updateNewMessage(text) {
+    this._state.dialogsPage.newMessageText = text;
+    this._callSubscriber(this._state);
+  },
+
+  subscribe(observer) {
+    this._callSubscriber = observer;
+  },
+
+  dispatch(action) {
+    if (action.typeof === 'ADD POST') {
+      let post = {
+        id: '4', 
+        message: this._state.profilePage.newPostText,
+        likeCount: '0'
+      };
+    
+      this._state.profilePage.postData.push(post);
+      this._state.profilePage.newPostText = '';
+      this._callSubscriber(this._state);
+    } else if (action.typeof === 'UPDATE-NEW-POST-TEXT') {
+      this._state.dialogsPage.newMessageText = text;
+      this._callSubscriber(this._state);
+    }
+  }
+
 }
 
-export default state;
+export default store;

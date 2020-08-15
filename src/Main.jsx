@@ -18,8 +18,8 @@ function Main(props) {
             <Aside linkData = { props.linkData } dialogsData = {props.dialogsData} />
             {/* <Route exact path ="/dialog" component = {Dialog}/>
             <Route path="/profile" component = {Profile}/> */}
-            <Route path ="/dialog" render = { () => <Dialog messagesData = { props.messagesData } dialogsData = {props.dialogsData} /> }/>
-            <Route path="/profile" render = { () => <Profile postData = { props.postData }/> }/>
+            <Route path ="/dialog" render = { () => <Dialog messagesData = { props.messagesData } dialogsData = {props.dialogsData} addMessage = { props.addMessage } updateNewMessage = { props.updateNewMessage } newMessageText = { props.newMessageText } /> }/>
+            <Route path="/profile" render = { () => <Profile postData = { props.postData } newPostText ={ props.newPostText } addPost = { props.addPost } updateNewPost = { props.updateNewPost } /> }/>
             <Route path="/news" component = {News}/>
             <Route path="/music" component = {Music}/>
             <Route path="/settings" component = {Settings}/>

@@ -8,7 +8,7 @@ import Friends from './Friends';
 
 const AsideLink = (props) => {
   return <li className = "nav-item"> 
-             <NavLink to = {props.link} class = {A.nav_link} activeClassName = {A.activeLink}> {props.linkName} </NavLink>
+             <NavLink to = {props.link} className = {A.nav_link} activeClassName = {A.activeLink}> {props.linkName} </NavLink>
           </li>
 }
 
@@ -23,19 +23,19 @@ function Aside(props) {
 
           <Friends dialogsData = { props.dialogsData }/>
               {/* <li className = "nav-item"> 
-                <NavLink to = "/profile" class = {A.nav_link} activeClassName = {A.activeLink}> profile </NavLink>
+                <NavLink to = "/profile" className = {A.nav_link} activeClassName = {A.activeLink}> profile </NavLink>
               </li>
               <li className = "nav-item"> 
-                <NavLink to = "/dialog" class = {`${A.nav_link}`} activeClassName = {A.activeLink}> messages </NavLink>
+                <NavLink to = "/dialog" className = {`${A.nav_link}`} activeClassName = {A.activeLink}> messages </NavLink>
               </li>
               <li className = "nav-item"> 
-                <NavLink to = "/news" class = {A.nav_link} activeClassName = {A.activeLink}> news </NavLink>
+                <NavLink to = "/news" className = {A.nav_link} activeClassName = {A.activeLink}> news </NavLink>
               </li>
               <li className = "nav-item"> 
-                <NavLink to = "/music" class = {A.nav_link} activeClassName = {A.activeLink}> music </NavLink>
+                <NavLink to = "/music" className = {A.nav_link} activeClassName = {A.activeLink}> music </NavLink>
               </li>
               <li className = "nav-item"> 
-                <NavLink to = "/settings" class = {A.nav_link} activeClassName = {A.activeLink}> settings </NavLink>
+                <NavLink to = "/settings" className = {A.nav_link} activeClassName = {A.activeLink}> settings </NavLink>
               </li> */}
         </ul>
     </aside>

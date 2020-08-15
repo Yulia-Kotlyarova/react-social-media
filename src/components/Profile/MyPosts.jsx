@@ -11,14 +11,22 @@ function MyPosts(props) {
   const newPost = React.createRef();
 
   const addPost = () => {
+    // let text = newPost.current.value;
+    props.addPost();
+    // props.updateNewPost('');
+  }
+  debugger
+
+  const onPostChange = () => {
+    debugger
     let text = newPost.current.value;
-    alert(text);
+    props.updateNewPost(text);
   }
 
   return (
     <div>
         <div>
-                <textarea ref = { newPost } autoFocus={true}></textarea>
+                <textarea ref = { newPost } value = { props.newPostText } onChange = { onPostChange } autoFocus={true}/>
                 <button className = "send-btn" onClick = { addPost } > send </button>
 
         </div> 

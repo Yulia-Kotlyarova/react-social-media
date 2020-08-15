@@ -10,16 +10,16 @@ function Header() {
           {/* <div className="row">
             <ul className="col-12 nav justify-content-center">
               <li className = "nav-item"> 
-                <a href = "#" class = "nav-link active"> title</a>
+                <a href = "#" className = "nav-link active"> title</a>
               </li>
               <li className = "nav-item"> 
-                <a href = "#" class = "nav-link"> title</a>
+                <a href = "#" className = "nav-link"> title</a>
               </li>
               <li className = "nav-item"> 
-                <a href = "#" class = "nav-link"> title</a>
+                <a href = "#" className = "nav-link"> title</a>
               </li>
               <li className = "nav-item"> 
-                <a href = "#" class = "nav-link"> title</a>
+                <a href = "#" className = "nav-link"> title</a>
               </li>
             </ul>
           </div> */}

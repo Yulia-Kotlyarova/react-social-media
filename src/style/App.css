@@ -61,7 +61,7 @@ aside ul {
 .ava-friend {
   width: 45px;
   height: 45px;
-  padding: 5px;
+  padding: 3px;
   background-color: rgb(216, 224, 231);
   border-radius: 50%;
 }
@@ -72,8 +72,8 @@ aside ul {
 }
 
 .friend-ava > img {
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
 }
 
 .friends-box {
@@ -88,6 +88,7 @@ aside ul {
 .send-btn {
   border: none;
   padding: 3px 15px;
+  margin: 15px 0;
   text-transform: uppercase;
   border-radius: 3px;
   color: #282c34;
@@ -103,7 +104,9 @@ aside ul {
 textarea {
   width: 100%;
   margin: 20px;
+  padding: 10px;
   background-color:#b0bec583 ;
+  color: white;
   outline: none;
   border-radius: 4px;
 }
