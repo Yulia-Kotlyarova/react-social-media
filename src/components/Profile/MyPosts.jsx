@@ -11,16 +11,17 @@ function MyPosts(props) {
   const newPost = React.createRef();
 
   const addPost = () => {
+    debugger
     // let text = newPost.current.value;
-    props.addPost();
+    props.dispatch({ type: 'ADD POST' });
     // props.updateNewPost('');
   }
-  debugger
 
   const onPostChange = () => {
     debugger
-    let text = newPost.current.value;
-    props.updateNewPost(text);
+    let newText = newPost.current.value;
+    props.dispatch({ type: 'UPDATE-NEW-POST-TEXT', text: newText });
+    // props.dispatch(action);
   }
 
   return (

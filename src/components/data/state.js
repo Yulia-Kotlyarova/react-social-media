@@ -52,7 +52,13 @@ let store = {
   },
 
   _callSubscriber() {
+    debugger
     console.log(true);
+  },
+  
+  subscribe(observer) {
+    debugger
+    this._callSubscriber = observer;
   },
 
   addPost() {
@@ -90,12 +96,9 @@ let store = {
     this._callSubscriber(this._state);
   },
 
-  subscribe(observer) {
-    this._callSubscriber = observer;
-  },
-
   dispatch(action) {
-    if (action.typeof === 'ADD POST') {
+    debugger
+    if (action.type === 'ADD POST') {
       let post = {
         id: '4', 
         message: this._state.profilePage.newPostText,
@@ -105,8 +108,9 @@ let store = {
       this._state.profilePage.postData.push(post);
       this._state.profilePage.newPostText = '';
       this._callSubscriber(this._state);
-    } else if (action.typeof === 'UPDATE-NEW-POST-TEXT') {
-      this._state.dialogsPage.newMessageText = text;
+
+    } else if (action.type === "UPDATE-NEW-POST-TEXT") {
+      this._state.profilePage.newPostText = action.text;
       this._callSubscriber(this._state);
     }
   }

@@ -11,17 +11,18 @@ import { BrowserRouter } from 'react-router-dom';
 
 
 let renderTree = (state) => {
+    debugger
   ReactDOM.render(
     <React.StrictMode>
       <BrowserRouter>
         <Header />
-        
+       
         <Main 
             state = { state }
             postData ={ state.profilePage.postData } 
             newPostText ={ state.profilePage.newPostText }
-            updateNewPost = { store.updateNewPost.bind(store) }
-            addPost = { store.addPost.bind(store) }
+            // updateNewPost = { store.updateNewPost.bind(store) }
+            dispatch = { store.dispatch.bind(store) }
 
             messagesData = { state.dialogsPage.messagesData } 
             dialogsData = { state.dialogsPage.dialogsData }
