@@ -30,7 +30,7 @@ function Dialog(props) {
                   <DialogItem name = ' Murrr' id = "5"/> */}
             </ul>
         </div>
-            <Messages messagesData = { props.messagesData } addMessage = { props.addMessage } updateNewMessage = { props.updateNewMessage } newMessageText = { props.newMessageText } />
+            <Messages messagesData = { props.messagesData } newMessageText = { props.newMessageText } dispatch = { props.dispatch } />
       </div>
     </section>
   );

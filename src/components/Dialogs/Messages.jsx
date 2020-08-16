@@ -11,12 +11,14 @@ function Messages(props) {
 
   const sendMessage = () => {
     // let text = newMessage.current.value;
-    props.addMessage();
+    // props.addMessage();
+    props.dispatch({ type: 'ADD-MESSAGE' })
   }
 
   const onMessageChange = () => {
     let text = newMessage.current.value;
-    props.updateNewMessage(text);
+    // props.updateNewMessage(text);
+    props.dispatch({ type: 'UPDATE-NEW-MESSAGE', text: text })
   }
 
   let messagesItem = props.messagesData.map(el => <Message message = {el.message}/>); 

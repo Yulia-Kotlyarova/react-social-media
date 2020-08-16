@@ -18,7 +18,7 @@ function Main(props) {
             <Aside linkData = { props.linkData } dialogsData = {props.dialogsData} />
             {/* <Route exact path ="/dialog" component = {Dialog}/>
             <Route path="/profile" component = {Profile}/> */}
-            <Route path ="/dialog" render = { () => <Dialog messagesData = { props.messagesData } dialogsData = {props.dialogsData} addMessage = { props.addMessage } updateNewMessage = { props.updateNewMessage } newMessageText = { props.newMessageText } /> }/>
+            <Route path ="/dialog" render = { () => <Dialog messagesData = { props.messagesData } dialogsData = {props.dialogsData}  newMessageText = { props.newMessageText } dispatch = { props.dispatch }/> }/>
             <Route path="/profile" render = { () => <Profile postData = { props.postData } newPostText ={ props.newPostText } dispatch = { props.dispatch } /> }/>
             <Route path="/news" component = {News}/>
             <Route path="/music" component = {Music}/>

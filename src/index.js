@@ -27,8 +27,8 @@ let renderTree = (state) => {
             messagesData = { state.dialogsPage.messagesData } 
             dialogsData = { state.dialogsPage.dialogsData }
             newMessageText = { state.dialogsPage.newMessageText } 
-            updateNewMessage = { store.updateNewMessage.bind(store) }
-            addMessage = { store.addMessage.bind(store) }
+            // updateNewMessage = { store.updateNewMessage.bind(store) }
+            // addMessage = { store.addMessage.bind(store) }
 
             linkData = {state.linkData} />
 
