@@ -3,6 +3,7 @@ import Post from'./Post.jsx';
 import alien from '../../img/alien.svg';
 
 import '../../style/App.css';
+import { addPostActCreator, onPostChangeActCreator } from '../data/state';
 
 function MyPosts(props) {
 
@@ -12,13 +13,13 @@ function MyPosts(props) {
 
   const addPost = () => {
     // let text = newPost.current.value;
-    props.dispatch({ type: 'ADD POST' });
+    props.dispatch(addPostActCreator());
     // props.updateNewPost('');
   }
 
   const onPostChange = () => {
     let newText = newPost.current.value;
-    props.dispatch({ type: 'UPDATE-NEW-POST-TEXT', text: newText });
+    props.dispatch(onPostChangeActCreator(newText));
     // props.dispatch(action);
   }
 

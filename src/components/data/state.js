@@ -4,6 +4,11 @@ import jelly from '../../img/jellyfish.svg';
 import unity from '../../img/unity-hand.svg';
 import cat from '../../img/cat-face.svg';
 
+const ADD_POST = 'ADD POST';
+const UPDATE_NEW_TEXT = 'UPDATE-NEW-POST-TEXT';
+const ADD_MESSAGE = 'ADD-MESSAGE';
+const UPDATE_NEW_MESSAGE = 'UPDATE-NEW-MESSAGE';
+
 let store = {
   _state: {
 
@@ -131,4 +136,11 @@ let store = {
 
 }
 
+export const addPostActCreator = () => ({type: ADD_POST });
+export const onPostChangeActCreator = (newText) => ({ type: UPDATE_NEW_TEXT, text: newText });
+
+export const sendMessageActCreator = () => ({type: ADD_MESSAGE });
+export const onMessageChangeActCreator = (text) => ({ type: UPDATE_NEW_MESSAGE, text: text });
+
 export default store;
+

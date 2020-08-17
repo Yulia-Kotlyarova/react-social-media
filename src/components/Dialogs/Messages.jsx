@@ -1,6 +1,8 @@
 import React from 'react';
 import '../../style/App.css';
 
+import { sendMessageActCreator, onMessageChangeActCreator} from '../data/state';
+
 const Message = (props) => {
   return  <li className = "nav-item massage-item"> {props.message} </li>
   }
@@ -12,13 +14,13 @@ function Messages(props) {
   const sendMessage = () => {
     // let text = newMessage.current.value;
     // props.addMessage();
-    props.dispatch({ type: 'ADD-MESSAGE' })
+    props.dispatch(sendMessageActCreator());
   }
 
   const onMessageChange = () => {
     let text = newMessage.current.value;
     // props.updateNewMessage(text);
-    props.dispatch({ type: 'UPDATE-NEW-MESSAGE', text: text })
+    props.dispatch(onMessageChangeActCreator(text))
   }
 
   let messagesItem = props.messagesData.map(el => <Message message = {el.message}/>); 
