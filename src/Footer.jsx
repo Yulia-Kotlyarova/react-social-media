@@ -5,6 +5,7 @@ function Footer() {
   return (
     <footer>
         <a href="https://stories.freepik.com/car">Illustration by Stories by Freepik</a>
+        <a href="https://www.freepik.com/vectors/business">Business vector created by macrovector - www.freepik.com</a>
     </footer>
   );
 }
