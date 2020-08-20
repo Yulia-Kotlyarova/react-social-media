@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../style/App.css';
 
-import { sendMessageActCreator, onMessageChangeActCreator} from '../data/state';
+import { sendMessageActCreator, onMessageChangeActCreator} from '../data/dialog-reduser';
 
 const Message = (props) => {
   return  <li className = "nav-item massage-item"> {props.message} </li>

@@ -3,11 +3,9 @@ import eye from '../../img/eye-open.svg';
 import jelly from '../../img/jellyfish.svg';
 import unity from '../../img/unity-hand.svg';
 import cat from '../../img/cat-face.svg';
-
-const ADD_POST = 'ADD POST';
-const UPDATE_NEW_TEXT = 'UPDATE-NEW-POST-TEXT';
-const ADD_MESSAGE = 'ADD-MESSAGE';
-const UPDATE_NEW_MESSAGE = 'UPDATE-NEW-MESSAGE';
+import profileReduser from './profile-reduser.js';
+import dialogReduser from './dialog-reduser.js';
+import sidebarReduser from './sidebar-reduser.js';
 
 let store = {
   _state: {
@@ -103,44 +101,14 @@ let store = {
 
   dispatch(action) {
 
-    if (action.type === 'ADD POST') {
-      let post = {
-        id: '4', 
-        message: this._state.profilePage.newPostText,
-        likeCount: '0'
-      };
-    
-      this._state.profilePage.postData.push(post);
-      this._state.profilePage.newPostText = '';
-      this._callSubscriber(this._state);
+    this._state.profilePage = profileReduser(this._state.profilePage, action);
+    this._state.dialogsPage = dialogReduser(this._state.dialogsPage, action);
+    this._state.linkData = sidebarReduser(this._state.linkData, action);
 
-    } else if (action.type === "UPDATE-NEW-POST-TEXT") {
-      this._state.profilePage.newPostText = action.text;
-      this._callSubscriber(this._state);
+    this._callSubscriber(this._state);
 
-    } else if ( action.type === 'ADD-MESSAGE') {
-      let message = {
-        id: '4',
-        message: this._state.dialogsPage.newMessageText,
-      };
-    
-      this._state.dialogsPage.messagesData.push(message);
-      this._state.dialogsPage.newMessageText = '';
-      this._callSubscriber(this._state);
-
-    } else if (action.type === 'UPDATE-NEW-MESSAGE') {
-      this._state.dialogsPage.newMessageText = action.text;
-      this._callSubscriber(this._state);
-    }
   }
 
 }
 
-export const addPostActCreator = () => ({type: ADD_POST });
-export const onPostChangeActCreator = (newText) => ({ type: UPDATE_NEW_TEXT, text: newText });
-
-export const sendMessageActCreator = () => ({type: ADD_MESSAGE });
-export const onMessageChangeActCreator = (text) => ({ type: UPDATE_NEW_MESSAGE, text: text });
-
 export default store;
-
