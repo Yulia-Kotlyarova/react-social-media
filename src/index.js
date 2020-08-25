@@ -1,5 +1,5 @@
 import * as serviceWorker from './serviceWorker';
-import store from './components/data/state'
+import store from './components/data/redux-store';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -41,6 +41,10 @@ let renderTree = (state) => {
 
 renderTree(store.getState());
 
-store.subscribe(renderTree);
+store.subscribe( () => {
+  debugger
+  let state = store.getState();
+  renderTree(state);
+});
 
 serviceWorker.unregister();
