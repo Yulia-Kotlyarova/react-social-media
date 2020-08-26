@@ -6,28 +6,26 @@ import '../../style/App.css';
 import { addPostActCreator, onPostChangeActCreator } from '../data/profile-reduser';
 
 function MyPosts(props) {
-
+  debugger
   const PostItem = props.postData.map(el => <Post message = {el.message} ava = {alien} likes = {el.likeCount}/> );
 
   const newPost = React.createRef();
 
-  const addPost = () => {
-    // let text = newPost.current.value;
-    props.dispatch(addPostActCreator());
-    // props.updateNewPost('');
+  const onAddPost = () => {
+    props.addPost();
   }
 
   const onPostChange = () => {
+    debugger
     let newText = newPost.current.value;
-    props.dispatch(onPostChangeActCreator(newText));
-    // props.dispatch(action);
+    props.updateNewPost(newText);
   }
 
   return (
     <div>
         <div>
                 <textarea ref = { newPost } value = { props.newPostText } onChange = { onPostChange } autoFocus={true}/>
-                <button className = "send-btn" onClick = { addPost } > send </button>
+                <button className = "send-btn" onClick = { onAddPost } > send </button>
 
         </div> 
         { PostItem }

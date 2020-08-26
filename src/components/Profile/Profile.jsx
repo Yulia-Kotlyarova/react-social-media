@@ -1,13 +1,14 @@
 import React from 'react';
 import '../../style/App.css';
-import MyPosts from'./MyPosts.jsx';
+import MyPostsContainer from'./MyPostsContainer.jsx';
 import ProfileInfo from './ProfileInfo.jsx';
 
 function Profile(props) {
+  debugger
   return (
     <section className="col-8">
       <ProfileInfo/>
-      <MyPosts postData = { props.postData }  newPostText ={ props.newPostText } dispatch = { props.dispatch} />
+      <MyPostsContainer store ={ props.store } />
     </section>
   );
 }

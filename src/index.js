@@ -11,7 +11,6 @@ import { BrowserRouter } from 'react-router-dom';
 
 
 let renderTree = (state) => {
-    debugger
   ReactDOM.render(
     <React.StrictMode>
       <BrowserRouter>
@@ -19,6 +18,7 @@ let renderTree = (state) => {
        
         <Main 
             state = { state }
+            store = { store }
             postData ={ state.profilePage.postData } 
             newPostText ={ state.profilePage.newPostText }
             // updateNewPost = { store.updateNewPost.bind(store) }
@@ -42,7 +42,6 @@ let renderTree = (state) => {
 renderTree(store.getState());
 
 store.subscribe( () => {
-  debugger
   let state = store.getState();
   renderTree(state);
 });
