@@ -1,14 +1,14 @@
 import { createStore, combineReducers } from "redux";
-import profileReduser from './profile-reduser.js';
-import dialogReduser from './dialog-reduser.js';
-import sidebarReduser from './sidebar-reduser.js';
+import profileReducer from './profile-reducer.js';
+import dialogReducer from './dialog-reducer.js';
+import sidebarReducer from './sidebar-reducer.js';
 
-let redusers = combineReducers({
-    profilePage: profileReduser,
-    dialogsPage: dialogReduser,
-    linkData: sidebarReduser
-});
+let reducers = combineReducers({
+    profilePage: profileReducer,
+    dialogsPage: dialogReducer,
+    linkData: sidebarReducer
+});  // STATE
 
-let store = createStore(redusers);
+let store = createStore(reducers);
 
 export default store;

@@ -11,7 +11,7 @@ let initialState = {
     newPostText: 'kookooshka'
   }
 
-const profileReduser = (state = initialState, action) => {
+const profileReducer = (state = initialState, action) => {
 
     switch(action.type) {
         case ADD_POST:
@@ -32,27 +32,9 @@ const profileReduser = (state = initialState, action) => {
         default:
             return state;
     }
-    // if (action.type === 'ADD POST') {
-    //     let post = {
-    //       id: '4', 
-    //       message: state.newPostText,
-    //       likeCount: '0'
-    //     };
-      
-    //     state.postData.push(post);
-    //     state.newPostText = '';
-    //     // this._callSubscriber(this._state);
-  
-    //   } else if (action.type === "UPDATE-NEW-POST-TEXT") {
-    //     state.newPostText = action.text;
-    //     // this._callSubscriber(this._state);
-  
-    //   }
-
-    // return state;
 }
 
 export const addPostActCreator = () => ({type: ADD_POST });
 export const onPostChangeActCreator = (newText) => ({ type: UPDATE_NEW_TEXT, text: newText });
 
-export default profileReduser;
+export default profileReducer;

@@ -1,11 +1,14 @@
+
+// old store, now store in REDUX-STORE
+
 import monster from '../../img/angry-monster.svg';
 import eye from '../../img/eye-open.svg';
 import jelly from '../../img/jellyfish.svg';
 import unity from '../../img/unity-hand.svg';
 import cat from '../../img/cat-face.svg';
-import profileReduser from './profile-reduser.js';
-import dialogReduser from './dialog-reduser.js';
-import sidebarReduser from './sidebar-reduser.js';
+import profileReducer from './profile-reducer.js';
+import dialogReducer from './dialog-reducer.js';
+import sidebarReducer from './sidebar-reducer.js';
 
 let store = {
   _state: {
@@ -99,16 +102,15 @@ let store = {
   //   this._callSubscriber(this._state);
   // },
 
-  dispatch(action) {
+  // dispatch(action) {
 
-    this._state.profilePage = profileReduser(this._state.profilePage, action);
-    this._state.dialogsPage = dialogReduser(this._state.dialogsPage, action);
-    this._state.linkData = sidebarReduser(this._state.linkData, action);
+  //   this._state.profilePage = profileReducer(this._state.profilePage, action);
+  //   this._state.dialogsPage = dialogReducer(this._state.dialogsPage, action);
+  //   this._state.linkData = sidebarReducer(this._state.linkData, action);
 
-    this._callSubscriber(this._state);
+  //   this._callSubscriber(this._state);
 
-  }
-
+  // }
 }
 
-export default store;
+// export default store;

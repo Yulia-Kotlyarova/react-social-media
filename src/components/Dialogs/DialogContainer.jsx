@@ -3,7 +3,7 @@ import '../../style/App.css';
 import '../../style/Dialog.css';
 import Dialog from './Dialog';
 import { NavLink } from 'react-router-dom';
-import { sendMessageActCreator, onMessageChangeActCreator} from '../data/dialog-reduser';
+import { sendMessageActCreator, onMessageChangeActCreator} from '../data/dialog-reducer';
 
 function DialogContainer(props) {
   debugger

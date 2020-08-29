@@ -3,7 +3,7 @@ import Post from'./Post.jsx';
 import alien from '../../img/alien.svg';
 
 import '../../style/App.css';
-import { addPostActCreator, onPostChangeActCreator } from '../data/profile-reduser';
+import { addPostActCreator, onPostChangeActCreator } from '../data/profile-reducer';
 
 function MyPosts(props) {
   debugger

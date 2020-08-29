@@ -7,8 +7,8 @@ import DialogContainer from './components/Dialogs/DialogContainer.jsx';
 import News from './News.jsx';
 import Music from './Music.jsx';
 import Settings from './Settings.jsx';
-import Friends from './Friends.jsx';
 import { Route, BrowserRouter } from 'react-router-dom';
+import AsideContainer from './AsideContainer';
 
 function Main(props) {
   debugger
@@ -16,7 +16,7 @@ function Main(props) {
     <BrowserRouter>
       <div className="container">
         <div className="row">
-            <Aside linkData = { props.linkData } dialogsData = {props.dialogsData} />
+            <AsideContainer linkData = { props.linkData } dialogsData = {props.dialogsData} />
             {/* <Route exact path ="/dialog" component = {Dialog}/>
             <Route path="/profile" component = {Profile}/> */}
             <Route path ="/dialog" render = { () => <DialogContainer store ={ props.store }/> }/>

@@ -2,41 +2,32 @@ import React from 'react';
 import './style/App.css';
 import A from './style/Aside.module.css';
 import { NavLink } from 'react-router-dom';
-import Friends from './Friends';
 
-
-
-const AsideLink = (props) => {
+const AsideLink = (props) => { // links
   return <li className = "nav-item"> 
              <NavLink to = {props.link} className = {A.nav_link} activeClassName = {A.activeLink}> {props.linkName} </NavLink>
           </li>
 }
 
+const DialogItem = (props) => {  // friends
+  return <a className = " col-4 friend-ava"> 
+            <img src= {props.ava} alt="props.name" className = "ava-friend"/>
+        </a>
+}
+
 function Aside(props) {
 
-  let asideLinks = props.linkData.map(el => <AsideLink link = {el.link} linkName = {el.linkName} id = {el.id}/>);
+  const asideLinks = props.linkData.map(el => <AsideLink link = {el.link} linkName = {el.linkName} id = {el.id}/>);
+  const friendItems = props.dialogsData.map(el => <DialogItem ava = {el.ava} name = {el.name} id = {el.id}/>);
 
   return (
     <aside className="col-2" >
         <ul className="nav flex-column">
           { asideLinks }
 
-          <Friends dialogsData = { props.dialogsData }/>
-              {/* <li className = "nav-item"> 
-                <NavLink to = "/profile" className = {A.nav_link} activeClassName = {A.activeLink}> profile </NavLink>
-              </li>
-              <li className = "nav-item"> 
-                <NavLink to = "/dialog" className = {`${A.nav_link}`} activeClassName = {A.activeLink}> messages </NavLink>
-              </li>
-              <li className = "nav-item"> 
-                <NavLink to = "/news" className = {A.nav_link} activeClassName = {A.activeLink}> news </NavLink>
-              </li>
-              <li className = "nav-item"> 
-                <NavLink to = "/music" className = {A.nav_link} activeClassName = {A.activeLink}> music </NavLink>
-              </li>
-              <li className = "nav-item"> 
-                <NavLink to = "/settings" className = {A.nav_link} activeClassName = {A.activeLink}> settings </NavLink>
-              </li> */}
+        <div className="row justify-content-around friends-box">
+          { friendItems }
+        </div>
         </ul>
     </aside>
   );

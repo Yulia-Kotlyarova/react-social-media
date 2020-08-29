@@ -1,5 +1,5 @@
 import React from 'react';
-import { addPostActCreator, onPostChangeActCreator } from '../data/profile-reduser';
+import { addPostActCreator, onPostChangeActCreator } from '../data/profile-reducer';
 import MyPosts from './MyPosts';
 
 function MyPostsContainer(props) {
