@@ -7,30 +7,25 @@ import Header from './Header.jsx';
 import Footer from './Footer.jsx';
 import Main from'./Main.jsx';
 import { BrowserRouter } from 'react-router-dom';
-import StoreContext from './StoreContext';
-//import { addPost, addMessage, updateNewPost, updateNewMessage, subscribe } from './components/data/state';
+import { Provider } from 'react-redux';
+
+ReactDOM.render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <Header/>
+      <Provider store = { store }>
+        <Main/>
+        <Footer/>
+      </Provider>
+    </BrowserRouter>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
 
 
-let renderTree = (state) => {
-  ReactDOM.render(
-    <React.StrictMode>
-      <BrowserRouter>
-        <Header/>
-        <StoreContext.Provider value = { store }>
-          <Main/>
-          <Footer/>
-        </StoreContext.Provider>
-      </BrowserRouter>
-    </React.StrictMode>,
-    document.getElementById('root')
-  );
-}
-
-renderTree(store.getState());
-
-store.subscribe( () => {
-  let state = store.getState();
-  renderTree(state);
-});
+// store.subscribe( () => {
+//   let state = store.getState();   // CONNECT() CONTAINS SUBSCRIBE NOW
+//   renderTree(state);
+// });
 
 serviceWorker.unregister();
