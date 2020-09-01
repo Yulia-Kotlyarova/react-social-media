@@ -7,6 +7,7 @@ import Header from './Header.jsx';
 import Footer from './Footer.jsx';
 import Main from'./Main.jsx';
 import { BrowserRouter } from 'react-router-dom';
+import StoreContext from './StoreContext';
 //import { addPost, addMessage, updateNewPost, updateNewMessage, subscribe } from './components/data/state';
 
 
@@ -14,25 +15,11 @@ let renderTree = (state) => {
   ReactDOM.render(
     <React.StrictMode>
       <BrowserRouter>
-        <Header />
-       
-        <Main 
-            state = { state }
-            store = { store }
-            postData ={ state.profilePage.postData } 
-            newPostText ={ state.profilePage.newPostText }
-            // updateNewPost = { store.updateNewPost.bind(store) }
-            dispatch = { store.dispatch.bind(store) }
-
-            messagesData = { state.dialogsPage.messagesData } 
-            dialogsData = { state.dialogsPage.dialogsData }
-            newMessageText = { state.dialogsPage.newMessageText } 
-            // updateNewMessage = { store.updateNewMessage.bind(store) }
-            // addMessage = { store.addMessage.bind(store) }
-
-            linkData = {state.linkData} />
-
-        <Footer/>
+        <Header/>
+        <StoreContext.Provider value = { store }>
+          <Main/>
+          <Footer/>
+        </StoreContext.Provider>
       </BrowserRouter>
     </React.StrictMode>,
     document.getElementById('root')

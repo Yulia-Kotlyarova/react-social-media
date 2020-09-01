@@ -52,20 +52,20 @@ let store = {
     }
   },
 
-  getState() {
-    debugger
-    return this._state;
-  },
+  // getState() {
+  //   debugger
+  //   return this._state;
+  // },
 
-  _callSubscriber() {
-    debugger
-    console.log(true);
-  },
+  // _callSubscriber() {
+  //   debugger
+  //   console.log(true);
+  // },
 
-  subscribe(observer) {
-    debugger
-    this._callSubscriber = observer;
-  },
+  // subscribe(observer) {
+  //   debugger
+  //   this._callSubscriber = observer;
+  // },
 
   // addPost() {
 

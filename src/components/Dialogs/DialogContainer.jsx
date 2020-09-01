@@ -4,24 +4,32 @@ import '../../style/Dialog.css';
 import Dialog from './Dialog';
 import { NavLink } from 'react-router-dom';
 import { sendMessageActCreator, onMessageChangeActCreator} from '../data/dialog-reducer';
+import StoreContext from '../../StoreContext';
 
-function DialogContainer(props) {
+function DialogContainer() {
   debugger
-  let state = props.store.getState().dialogsPage ;
+  return (
+    <StoreContext.Consumer> 
+      {
+        (store) => {
+          let state = store.getState().dialogsPage ;
 
-  const newMessage = React.createRef();
-  const sendMessage = () => {
-    props.store.dispatch(sendMessageActCreator());
-  }
+          const sendMessage = () => {
+            store.dispatch(sendMessageActCreator());
+          }
+        
+          const onMessageChange = (text) => {
+            store.dispatch(onMessageChangeActCreator(text))
+          }
 
-  const onMessageChange = (text) => {
-    props.store.dispatch(onMessageChangeActCreator(text))
-  }
-
-  return <Dialog updateNewMessage = { onMessageChange }
-  addMessage = {sendMessage}  
-  dialogsPage = { state }
-  />;
+          return  <Dialog updateNewMessage = { onMessageChange }
+                    addMessage = {sendMessage}  
+                    dialogsPage = { state }
+                    />;
+        }
+      }
+      </StoreContext.Consumer> 
+  )
 }
 
 export default DialogContainer;
