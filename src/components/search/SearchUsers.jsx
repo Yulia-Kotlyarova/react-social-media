@@ -29,7 +29,9 @@ const SearchUsers = (props) => {
     })
     return (
         <section className="col-8 ml-2 users ">
-            { userItem }
+            <div className="row">
+                { userItem }
+            </div>
             <button className = "send-btn"> MORE </button>
         </section>
     )
