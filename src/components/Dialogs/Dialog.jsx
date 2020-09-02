@@ -1,7 +1,8 @@
 import React from 'react';
 import '../../style/App.css';
 import '../../style/Dialog.css';
-import  Messages from './Messages.jsx';
+// import  Messages from './Messages.jsx';
+// import Message from './Messages';
 import { NavLink } from 'react-router-dom';
 
 const DialogItem = (props) => {
@@ -13,9 +14,27 @@ const DialogItem = (props) => {
         </li>
 }
 
-function Dialog(props) {
+const Message = (props) => {
+  return  <li className = "nav-item massage-item"> {props.message} </li>
+  }
 
-  let dialogsItems = props.dialogsData.map(el => <DialogItem ava = {el.ava} name = {el.name} id = {el.id}/>);
+function Dialog(props) {
+  debugger
+  let state = props.dialogsPage ;
+
+  let dialogsItems = state.dialogsData.map(el => <DialogItem ava = {el.ava} name = {el.name} id = {el.id}/>);
+  let messagesItem = state.messagesData.map(el => <Message message = {el.message}/>);
+  let newMessageText = state.newMessageText;
+
+  const newMessage = React.createRef();
+  const sendMessage = () => {
+    props.addMessage();
+  }
+
+  const onMessageChange = () => {
+    let text = newMessage.current.value;
+    props.updateNewMessage(text);
+  }
 
   return (
     <section className="col-8">
@@ -30,7 +49,13 @@ function Dialog(props) {
                   <DialogItem name = ' Murrr' id = "5"/> */}
             </ul>
         </div>
-            <Messages messagesData = { props.messagesData } newMessageText = { props.newMessageText } dispatch = { props.dispatch } />
+        <div className = "col-6 d-flex flex-column justify-content-between messages">
+            <textarea ref = {newMessage} value = { newMessageText }  onChange = { onMessageChange } rows = "5" className = "send-message" autoFocus = {true}> </textarea>
+            <button className = "send-btn" onClick = { sendMessage } > send</button>
+            <ul className="nav flex-column">
+              { messagesItem }
+            </ul>
+        </div>
       </div>
     </section>
   );
