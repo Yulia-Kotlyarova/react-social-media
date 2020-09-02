@@ -1,8 +1,6 @@
 import React from 'react';
 import '../../style/App.css';
 import '../../style/Dialog.css';
-// import  Messages from './Messages.jsx';
-// import Message from './Messages';
 import { NavLink } from 'react-router-dom';
 
 const DialogItem = (props) => {
@@ -19,7 +17,6 @@ const Message = (props) => {
   }
 
 function Dialog(props) {
-  debugger
   let state = props.dialogsPage ;
 
   let dialogsItems = state.dialogsData.map(el => <DialogItem ava = {el.ava} name = {el.name} id = {el.id}/>);

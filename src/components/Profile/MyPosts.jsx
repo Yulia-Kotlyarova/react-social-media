@@ -6,7 +6,6 @@ import '../../style/App.css';
 import { addPostActCreator, onPostChangeActCreator } from '../data/profile-reducer';
 
 function MyPosts(props) {
-  debugger
   const PostItem = props.postData.map(el => <Post message = {el.message} ava = {alien} likes = {el.likeCount}/> );
 
   const newPost = React.createRef();
@@ -16,7 +15,6 @@ function MyPosts(props) {
   }
 
   const onPostChange = () => {
-    debugger
     let newText = newPost.current.value;
     props.updateNewPost(newText);
   }

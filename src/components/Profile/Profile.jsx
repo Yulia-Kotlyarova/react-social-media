@@ -4,7 +4,6 @@ import MyPostsContainer from'./MyPostsContainer.jsx';
 import ProfileInfo from './ProfileInfo.jsx';
 
 function Profile(props) {
-  debugger
   return (
     <section className="col-8">
       <ProfileInfo/>

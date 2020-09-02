@@ -4,6 +4,7 @@ let initialState = [
     { id: 3, link: "/news", linkName: "news" },
     { id: 4, link: "/music", linkName: "music" },
     { id: 5, link: "/settings", linkName: "settings" },
+    { id: 6, link: "/search_users", linkName: "search users" },
     // { id: 6, link: "/friends", linkName: "friends"},
 ]
 
