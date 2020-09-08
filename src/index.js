@@ -7,7 +7,7 @@ import Header from './Header.jsx';
 import Footer from './Footer.jsx';
 import Main from'./Main.jsx';
 import { BrowserRouter } from 'react-router-dom';
-import { Provider } from 'react-redux';
+import { Provider } from 'react-redux';// allows UI to get a state
 
 ReactDOM.render(
   <React.StrictMode>

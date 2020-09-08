@@ -1,23 +1,44 @@
 import React from 'react';
+import { Provider, connect, useSelector, useDispatch } from 'react-redux';
 import User from './User';
 import cat from '../../img/cat-face.svg';
 import * as axios from 'axios';
+import { followActCreator, unfollowActCreator, setUsersAC } from '../data/search-reduser';
 
 const SearchUsers = (props) => {
-    debugger
-    if (props.users.length === 0) {
-        axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
-            props.setUsers(response.data.items);
-        })
-        // props.setUsers(        
-        //     [     
-        //     {id: 1, followed: false, photoUrl: `${cat}`, fullName: "pipetka", status: "full of pipetochnost", location: { city:'SPb', cnt:'Russia' }},
-        //     {id: 2, followed: true, photoUrl: `${cat}`, fullName: "meaw", status: "mr cat", location: { city:'SPb', cnt:'Russia' }},
-        //     {id: 3, followed: false, photoUrl: `${cat}`, fullName: "cosmo-dust", status: "full of dust", location: { city:'no', cnt:'no matter' }},
-        //     {id: 4, followed: true, photoUrl: `${cat}`, fullName: "unity", status: "we are", location: { city:'all of', cnt:'all of' }}
-        //     ]
-        // )
+    debugger 
+
+    let pageCount = Math.ceil(props.totalUserCount / props.pageSize);
+    let pages = [];
+    const selectPageStyle = 'active-page'
+
+    for (let i=1; i <= pageCount; i++){
+        pages.push(i);
     }
+
+    let anotherPage = (page) => {
+        props.togglePage(page);
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${props.pageSize}`)
+            .then(response => {
+                props.setUsers(response.data.items); // props sended by connect
+        })
+
+    }
+
+    let pageItem = pages.map(page => {
+        return <li onClick = {() => anotherPage(page) } className = {`nav-item pagination ${page == props.currentPage && selectPageStyle }`} > {page} </li>
+    });
+
+
+    React.useEffect(()=> {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${props.currentPage}&count=${props.pageSize}`)
+            .then(response => {
+                props.setUsers(response.data.items); // props sended by connect
+                props.totalCount(response.data.totalCount);
+        })
+    },[])
+    
+
 
     const userItem = props.users.map( u => {
         return <User id = {u.id} 
@@ -26,18 +47,20 @@ const SearchUsers = (props) => {
          name = {u.name} 
          followed = {u.followed}
          status = {u.status}
-        //  city = {u.location.city}
-        //  cnt = {u.location.cnt}
          key = {u.id}
-         follow = {props.follow}
-         unfollow = {props.unfollow} /> 
+         follow = { props.follow }
+         unfollow = { props.unfollow }
+          /> 
     })
     return (
         <section className="col-8 ml-2 users ">
             <div className="row">
                 { userItem }
             </div>
-            <button className = "send-btn"> MORE </button>
+            <ul className="nav">
+                { pageItem }
+            </ul>
+            {/* <button className = "send-btn" > MORE </button> */}
         </section>
     )
 }

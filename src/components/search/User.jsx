@@ -1,7 +1,11 @@
 import React from 'react';
 
 const User = (props) => {
-    debugger
+    let followStyle = ["btn-second"];
+
+    if (!props.followed) {
+        followStyle.push('follow')
+    }
     return (
         <div className = "col-5 mr-2 mb-2 user-box">
                 <div className ="row">
@@ -11,8 +15,8 @@ const User = (props) => {
                             props.photos.small != null ? <img src = {props.photos.small} className = "ava-friend" /> : <img src = {props.ava} className = "ava-friend" />
                         }
                         {
-                            props.followed ? <button className = "btn-second" onClick = { () => props.unfollow(props.id)}> unfollow </button>
-                            : <button className = "btn-second" onClick = { () => props.follow(props.id)}> follow </button>
+                            props.followed ? <button className = {followStyle.join(' ')} onClick = { () => props.unfollow(props.id)}> unfollow </button>
+                            : <button className = {followStyle.join(' ')} onClick = { () => props.follow(props.id)}> follow </button>
                         }
                     </div>
                     <div className="col-7 d-flex flex-column justify-content-between ">

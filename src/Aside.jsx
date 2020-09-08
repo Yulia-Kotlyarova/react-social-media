@@ -5,13 +5,13 @@ import { NavLink } from 'react-router-dom';
 
 const AsideLink = (props) => { // links
   return <li className = "nav-item"> 
-             <NavLink to = {props.link} className = {A.nav_link} activeClassName = {A.activeLink}> {props.linkName} </NavLink>
+             <NavLink to = {props.link} className = {A.nav_link} activeClassName = {A.activeLink} key = {props.linkName} > {props.linkName} </NavLink>
           </li>
 }
 
 const DialogItem = (props) => {  // friends
   return <a className = " col-4 friend-ava"> 
-            <img src= {props.ava} alt="props.name" className = "ava-friend"/>
+            <img src= {props.ava} alt="props.name" className = "ava-friend" key = {props.ava} />
         </a>
 }
 

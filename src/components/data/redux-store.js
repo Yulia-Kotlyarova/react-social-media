@@ -4,13 +4,16 @@ import dialogReducer from './dialog-reducer.js';
 import sidebarReducer from './sidebar-reducer.js';
 import searchReducer from './search-reduser';
 
-let reducers = combineReducers({
+const reducers = combineReducers({
     profilePage: profileReducer,
     dialogsPage: dialogReducer,
     linkData: sidebarReducer,
     usersPage: searchReducer,
 });  // STATE
 
-let store = createStore(reducers);
+const store = createStore(
+    reducers,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    );
 
 export default store;
