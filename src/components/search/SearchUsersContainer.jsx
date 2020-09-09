@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider, connect, useSelector, useDispatch } from 'react-redux';
 import SearchUsers from './SearchUsers';
-import { followActCreator, unfollowActCreator, setUsersAC, userPagesToggleAC, totalCountAC } from '../data/search-reduser';
+import { followActCreator, unfollowActCreator, setUsersAC, userPagesToggleAC, totalCountAC, isLoadingAC } from '../data/search-reduser';
 
 let mapStateToProps = (state) => { // принимает стейт и возвращает только то, что нужно юзеру
     return {
@@ -9,6 +9,7 @@ let mapStateToProps = (state) => { // принимает стейт и возв�
         pageSize: state.usersPage.pageSize,
         totalUserCount: state.usersPage.totalUserCount,
         currentPage: state.usersPage.currentPage,
+        isLoading: state.usersPage.isLoading,
     }
 }
 let mapDispatchToProps = (dispatch) => { 
@@ -18,6 +19,7 @@ let mapDispatchToProps = (dispatch) => {
         setUsers: (users) => dispatch(setUsersAC(users)),
         togglePage: (page) => dispatch(userPagesToggleAC(page)),
         totalCount: (total) => dispatch(totalCountAC(total)),
+        toLoading: (loading) => dispatch(isLoadingAC(loading)),
     }
 }
 

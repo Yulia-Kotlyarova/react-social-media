@@ -23,14 +23,22 @@ const SearchUsers = (props) => {
     }
 
     React.useEffect(()=> {
+        props.toLoading(true);
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${props.currentPage}&count=${props.pageSize}`)
             .then(response => {
+                props.toLoading(false);
                 props.setUsers(response.data.items); // props sended by connect
                 props.totalCount(response.data.totalCount);
         })
     },[])
     return (
-        <Users anotherPage = {anotherPage} pages = {pages} users = {props.users} follow = { props.follow } unfollow = { props.unfollow } />
+        <Users anotherPage = {anotherPage} 
+        pages = {pages} users = {props.users} 
+        follow = { props.follow } 
+        unfollow = { props.unfollow } 
+        currentPage = {props.currentPage} 
+        isLoading= {props.isLoading}
+        toLoading = {props.toLoading} />
     )
 }
 

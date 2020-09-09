@@ -23,6 +23,7 @@ const Users = (props) => {
     })
     return (
         <section className="col-8 ml-2 users ">
+            { props.isLoading && <div> is loading... </div>}
             <div className="row">
                 { userItem }
             </div>
