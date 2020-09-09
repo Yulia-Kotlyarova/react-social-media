@@ -10,7 +10,6 @@ const User = (props) => {
         <div className = "col-5 mr-2 mb-2 user-box">
                 <div className ="row">
                     <div className="col-5 d-flex flex-column justify-content-between align-items-center">
-                        {/* <img src = {props.ava.small != null ? props.ava.small : props.ava} className = "ava-friend" /> */}
                         {
                             props.photos.small != null ? <img src = {props.photos.small} className = "ava-friend" /> : <img src = {props.ava} className = "ava-friend" />
                         }
@@ -22,7 +21,6 @@ const User = (props) => {
                     <div className="col-7 d-flex flex-column justify-content-between ">
                         <strong> {props.name} </strong> <br/>
                         <span> {props.status} </span>
-                        {/* <span> {props.city}, {props.cnt} </span> */}
                     </div>
                 </div>
         </div>
