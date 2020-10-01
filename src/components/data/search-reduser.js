@@ -5,12 +5,14 @@ const SET_USERS = 'SET_USERS';
 const USER_PAGES_TOGGLE = 'USER_PAGES_TOGGLE';
 const TOTAL_USER_COUNT = 'TOTAL_USER_COUNT'; 
 const LOADING = 'LOADING';
+const FOLLOW_PROGRESS = 'FOLLOW_PROGRESS';
 
 
 let initialState = {
     users: [],
     isLoading:true,
-    totalUserCount: 10,
+    followingInProgress:[],
+    totalUserCount: 0,
     pageSize: 6,
     currentPage: 1,
 }
@@ -30,6 +32,7 @@ const searchReducer = (state = initialState, action) => {
         }
 
         case UNFOLLOW: {
+            debugger
             let stateCopy = {...state};
             stateCopy.users = [...state.users.map((u) => {
                 if (u.id === action.userId) {
@@ -51,17 +54,23 @@ const searchReducer = (state = initialState, action) => {
         case LOADING: {
             return { ...state, isLoading: action.loading}
         }
+        case FOLLOW_PROGRESS: {
+            return action.isLoading 
+            ?[ ...state.followingInProgress, action.userId] 
+            :[ state.followingInProgress.filter(id => id != action.userId)]
+        }
     
         default:
             return state
     }
 }
 
-export const followActCreator = (userId) => ({type: FOLLOW, userId });
-export const unfollowActCreator = (userId) => ({ type: UNFOLLOW, userId });
-export const setUsersAC = (users) => ({ type: SET_USERS, users });
-export const userPagesToggleAC = (page) => ({ type: USER_PAGES_TOGGLE, page });
-export const totalCountAC = (total) => ({ type: TOTAL_USER_COUNT, total});
-export const isLoadingAC = (loading) => ({type: LOADING, loading});
+export const follow = (userId) => ({type: FOLLOW, userId });
+export const unfollow = (userId) => ({ type: UNFOLLOW, userId });
+export const setUsers = (users) => ({ type: SET_USERS, users });
+export const togglePage = (page) => ({ type: USER_PAGES_TOGGLE, page });
+export const totalCount = (total) => ({ type: TOTAL_USER_COUNT, total});
+export const toLoading = (loading) => ({type: LOADING, loading});
+export const followProgress = (loading, userId) => ({type: FOLLOW_PROGRESS, loading, userId});
 
 export default searchReducer;

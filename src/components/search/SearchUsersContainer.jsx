@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider, connect, useSelector, useDispatch } from 'react-redux';
 import SearchUsers from './SearchUsers';
-import { followActCreator, unfollowActCreator, setUsersAC, userPagesToggleAC, totalCountAC, isLoadingAC } from '../data/search-reduser';
+import { follow, unfollow, setUsers, togglePage, totalCount, toLoading, followProgress } from '../data/search-reduser';
 
 let mapStateToProps = (state) => { // принимает стейт и возвращает только то, что нужно юзеру
     return {
@@ -10,19 +10,11 @@ let mapStateToProps = (state) => { // принимает стейт и возв�
         totalUserCount: state.usersPage.totalUserCount,
         currentPage: state.usersPage.currentPage,
         isLoading: state.usersPage.isLoading,
-    }
-}
-let mapDispatchToProps = (dispatch) => { 
-    return {
-        follow: (userId) => dispatch(followActCreator(userId)),
-        unfollow: (userId) => dispatch(unfollowActCreator(userId)),
-        setUsers: (users) => dispatch(setUsersAC(users)),
-        togglePage: (page) => dispatch(userPagesToggleAC(page)),
-        totalCount: (total) => dispatch(totalCountAC(total)),
-        toLoading: (loading) => dispatch(isLoadingAC(loading)),
+        followingInProgress: state.usersPage.followingInProgress,
     }
 }
 
-const SearchUsersContainer = connect(mapStateToProps, mapDispatchToProps)(SearchUsers);
+const SearchUsersContainer = connect(mapStateToProps, 
+    {follow, unfollow, setUsers, togglePage, totalCount, toLoading, followProgress})(SearchUsers);
 
 export default SearchUsersContainer;

@@ -6,8 +6,8 @@ import ProfileInfo from './ProfileInfo.jsx';
 function Profile(props) {
   return (
     <section className="col-8">
-      <ProfileInfo/>
-      <MyPostsContainer store ={ props.store } />
+      <ProfileInfo store ={ props.store } profile = {props.profile}/>
+      <MyPostsContainer store ={ props.store } profile = {props.profile}  />
     </section>
   );
 }

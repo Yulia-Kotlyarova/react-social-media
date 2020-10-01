@@ -3,13 +3,13 @@ import User from './User';
 import cat from '../../img/cat-face.svg';
 
 const Users = (props) => {
+    debugger
     const selectPageStyle = 'active-page';
     const pageItem = props.pages.map(page => {
         return <li onClick = {() => props.anotherPage(page) } className = {`nav-item pagination ${page == props.currentPage && selectPageStyle }`} > {page} </li>
     });
 
     const userItem = props.users.map( u => {
-        debugger
         return <User id = {u.id} 
          photos = {u.photos}
          ava = {cat}
@@ -19,7 +19,8 @@ const Users = (props) => {
          key = {u.id}
          follow = { props.follow }
          unfollow = { props.unfollow }
-          /> 
+         followingInProgress = {props.followingInProgress}
+         followProgress = {props.followProgress} />
     })
     return (
         <section className="col-8 ml-2 users ">

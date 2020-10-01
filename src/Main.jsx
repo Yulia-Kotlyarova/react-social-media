@@ -1,7 +1,7 @@
 import React from 'react';
 import './style/App.css';
 
-import Profile from './components/Profile/Profile.jsx';
+import ProfileContainer from './components/Profile/ProfileContainer.jsx';
 import DialogContainer from './components/Dialogs/DialogContainer.jsx';
 import News from './News.jsx';
 import Music from './Music.jsx';
@@ -19,7 +19,7 @@ function Main(props) {
             {/* <Route exact path ="/dialog" component = {Dialog}/>
             <Route path="/profile" component = {Profile}/> */}
             <Route path ="/dialog" render = { () => <DialogContainer/> }/>
-            <Route path="/profile" render = { () => <Profile/> }/>
+            <Route path="/profile/:userId?" render = { () => <ProfileContainer/> }/>
             <Route path="/search_users" render = { () => <SearchUsersContainer store = {props.store}/> }/>
             <Route path="/news" component = {News}/>
             <Route path="/music" component = {Music}/>

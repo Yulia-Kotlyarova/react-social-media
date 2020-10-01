@@ -4,6 +4,7 @@ import User from './User';
 import Users from './Users';
 import * as axios from 'axios';
 import { followActCreator, unfollowActCreator, setUsersAC } from '../data/search-reduser';
+import {getUsers} from '../api/api' 
 
 const SearchUsers = (props) => {
     let pageCount = Math.ceil(props.totalUserCount / props.pageSize);
@@ -15,20 +16,17 @@ const SearchUsers = (props) => {
 
     let anotherPage = (page) => {
         props.togglePage(page);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${props.pageSize}`)
-            .then(response => {
-                props.setUsers(response.data.items); // props sended by connect
+        getUsers(page, props.pageSize).then(data => { // axios
+                props.setUsers(data.items); // props sended by connect
         })
-
     }
 
     React.useEffect(()=> {
         props.toLoading(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${props.currentPage}&count=${props.pageSize}`)
-            .then(response => {
-                props.toLoading(false);
-                props.setUsers(response.data.items); // props sended by connect
-                props.totalCount(response.data.totalCount);
+        getUsers(props.currentPage, props.pageSize).then(data => {
+            props.toLoading(false);
+            props.setUsers(data.items); // props sended by connect
+            props.totalCount(data.totalCount);
         })
     },[])
     return (
@@ -38,7 +36,9 @@ const SearchUsers = (props) => {
         unfollow = { props.unfollow } 
         currentPage = {props.currentPage} 
         isLoading= {props.isLoading}
-        toLoading = {props.toLoading} />
+        toLoading = {props.toLoading}
+        followingInProgress = {props.followingInProgress}
+        followProgress = {props.followProgress} />
     )
 }
 
