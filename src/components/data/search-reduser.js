@@ -1,3 +1,4 @@
+import {getUsers} from '../api/api';
 
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
@@ -65,12 +66,25 @@ const searchReducer = (state = initialState, action) => {
     }
 }
 
-export const follow = (userId) => ({type: FOLLOW, userId });
-export const unfollow = (userId) => ({ type: UNFOLLOW, userId });
-export const setUsers = (users) => ({ type: SET_USERS, users });
-export const togglePage = (page) => ({ type: USER_PAGES_TOGGLE, page });
-export const totalCount = (total) => ({ type: TOTAL_USER_COUNT, total});
-export const toLoading = (loading) => ({type: LOADING, loading});
-export const followProgress = (loading, userId) => ({type: FOLLOW_PROGRESS, loading, userId});
+const follow = (userId) => ({type: FOLLOW, userId });
+const unfollow = (userId) => ({ type: UNFOLLOW, userId });
+const setUsers = (users) => ({ type: SET_USERS, users });
+const togglePage = (page) => ({ type: USER_PAGES_TOGGLE, page });
+const totalCount = (total) => ({ type: TOTAL_USER_COUNT, total});
+const toLoading = (loading) => ({type: LOADING, loading});
+const followProgress = (loading, userId) => ({type: FOLLOW_PROGRESS, loading, userId});
+
+const getUsersThunkCreator = (currentPage, pageSize) => {
+    return (dispatch) => {
+        dispatch(toLoading(true));
+        getUsers(currentPage, pageSize).then(data => {
+            dispatch(toLoading(false));
+            dispatch(setUsers(data.items)); // props sended by connect
+            dispatch(totalCount(data.totalCount));
+        });
+    } 
+};
 
 export default searchReducer;
+
+export { follow, unfollow, setUsers, togglePage, totalCount, toLoading, followProgress, getUsersThunkCreator};

@@ -21,14 +21,8 @@ const SearchUsers = (props) => {
         })
     }
 
-    React.useEffect(()=> {
-        props.toLoading(true);
-        getUsers(props.currentPage, props.pageSize).then(data => {
-            props.toLoading(false);
-            props.setUsers(data.items); // props sended by connect
-            props.totalCount(data.totalCount);
-        })
-    },[])
+    React.useEffect(()=> props.getUsersThunkCreator(),[])
+    
     return (
         <Users anotherPage = {anotherPage} 
         pages = {pages} users = {props.users} 

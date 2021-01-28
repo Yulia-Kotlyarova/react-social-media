@@ -1,9 +1,10 @@
-import { createStore, combineReducers } from "redux";
+import { createStore, combineReducers, applyMiddleware } from "redux";
 import profileReducer from './profile-reducer.js';
 import dialogReducer from './dialog-reducer.js';
 import sidebarReducer from './sidebar-reducer.js';
 import searchReducer from './search-reduser';
-import authReduser from "./auth-reduser.js";
+import authReduser from './auth-reduser.js';
+import thunkMiddleware from 'redux-thunk';
 
 const reducers = combineReducers({
     profilePage: profileReducer,
@@ -14,8 +15,9 @@ const reducers = combineReducers({
 });  // STATE
 
 const store = createStore(
-    reducers,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    reducers, 
+    applyMiddleware(thunkMiddleware),
+    // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
     );
 
 export default store;
