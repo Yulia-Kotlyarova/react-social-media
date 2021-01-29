@@ -1,39 +1,16 @@
 import React from 'react';
-import * as axios from 'axios';
 import { connect } from 'react-redux';
-import { authReduser, setAuthUserData } from './components/data/auth-reduser';
+import { authReduser, setAuthUserData, authThunkCreator } from './components/data/auth-reduser';
 
 import Header from './Header';
 
-class HeaderContainer extends React.Component {
-    componentDidMount() {
-        axios
-            .get(`https://social-network.samuraijs.com/api/1.0/auth/me`, {withCredentials: true})
-            .then(response => {
-                if(response.data.resultCode === 0) {
-                    let {id, login, email} = {...response.data.data};
-                    this.props.setAuthUserData(id, login, email);
-                }
-        })
-    }
-    // React.useEffect(() => {
-    //     axios
-    //         .get(`https://social-network.samuraijs.com/api/1.0/auth/me`, {withCredentials: true})
-    //         .then(response => {
-    //             if(response.data.resultCode === 0) {
-    //                 let {id, login, email} = {...response.data.data};
-    //                 props.setAuthUserData(id, login, email);
-    //             }
-    //     })
-    // },[])
+const HeaderContainer = (props) => {
 
-    render () {
-        return (
-            <Header {...this.props}/>
-        )
-    }
+    React.useEffect(() => {
+        props.authThunkCreator();
+    },[])
 
-
+    return <Header {...props}/>
 }
 
 let mapStateToProps = (state)=> ({
@@ -41,4 +18,4 @@ let mapStateToProps = (state)=> ({
     login: state.auth.login,
 })
 
-export default connect(mapStateToProps, {setAuthUserData})(HeaderContainer)
+export default connect(mapStateToProps, {setAuthUserData, authThunkCreator})(HeaderContainer)

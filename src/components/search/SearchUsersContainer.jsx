@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider, connect, useSelector, useDispatch } from 'react-redux';
 import SearchUsers from './SearchUsers';
-import { follow, unfollow, setUsers, togglePage, totalCount, toLoading, followProgress, getUsersThunkCreator  } from '../data/search-reduser.js';
+import { follow, unfollow, togglePage, followProgress, getUsersThunkCreator  } from '../data/search-reduser.js';
 
 let mapStateToProps = (state) => { // принимает стейт и возвращает только то, что нужно юзеру
     return {
@@ -15,6 +15,6 @@ let mapStateToProps = (state) => { // принимает стейт и возв�
 }
 
 const SearchUsersContainer = connect(mapStateToProps, 
-    { follow, unfollow, setUsers, togglePage, totalCount, toLoading, followProgress, getUsersThunkCreator })(SearchUsers);
+    { follow, unfollow, togglePage, followProgress, getUsers:getUsersThunkCreator })(SearchUsers);
 
 export default SearchUsersContainer;

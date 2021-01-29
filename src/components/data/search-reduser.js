@@ -1,4 +1,4 @@
-import {getUsers} from '../api/api';
+import { usersAPI } from '../api/api';
 
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
@@ -66,8 +66,8 @@ const searchReducer = (state = initialState, action) => {
     }
 }
 
-const follow = (userId) => ({type: FOLLOW, userId });
-const unfollow = (userId) => ({ type: UNFOLLOW, userId });
+const acceptFollow = (userId) => ({type: FOLLOW, userId });
+const acceptUnfollow = (userId) => ({ type: UNFOLLOW, userId });
 const setUsers = (users) => ({ type: SET_USERS, users });
 const togglePage = (page) => ({ type: USER_PAGES_TOGGLE, page });
 const totalCount = (total) => ({ type: TOTAL_USER_COUNT, total});
@@ -77,14 +77,43 @@ const followProgress = (loading, userId) => ({type: FOLLOW_PROGRESS, loading, us
 const getUsersThunkCreator = (currentPage, pageSize) => {
     return (dispatch) => {
         dispatch(toLoading(true));
-        getUsers(currentPage, pageSize).then(data => {
+        usersAPI.getUsers(currentPage, pageSize).then(data => {
             dispatch(toLoading(false));
-            dispatch(setUsers(data.items)); // props sended by connect
+            dispatch(setUsers(data.items));
             dispatch(totalCount(data.totalCount));
         });
     } 
 };
 
+const follow = (id) => {
+    return (dispatch) => {
+        // dispatch(followProgress(true, id));
+        dispatch(acceptUnfollow(id));
+        usersAPI.unfollow(id)
+            .then(response => {
+                if (response.data.resultCode === 0){
+                    dispatch(acceptUnfollow(id));
+                };
+                // dispatch(followProgress(false, id));
+            })
+    }
+};
+
+const unfollow = (id) => {
+    return (dispatch) => {
+        // dispatch(followProgress(true, id));
+        dispatch(acceptFollow(id));
+        usersAPI.follow(id)
+            .then(response => {
+                dispatch(setUsers(response.data.items));
+                if (response.data.resultCode === 0){
+                    dispatch(acceptFollow(id));
+                };
+                // dispatch(followProgress(false, id));
+        })
+    }
+};
+
 export default searchReducer;
 
-export { follow, unfollow, setUsers, togglePage, totalCount, toLoading, followProgress, getUsersThunkCreator};
+export { follow, unfollow, togglePage, followProgress, getUsersThunkCreator};

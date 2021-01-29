@@ -15,13 +15,14 @@ const SearchUsers = (props) => {
     }
 
     let anotherPage = (page) => {
-        props.togglePage(page);
-        getUsers(page, props.pageSize).then(data => { // axios
-                props.setUsers(data.items); // props sended by connect
-        })
+        props.getUsers(page, props.pageSize)
+        // props.togglePage(page);
+        // getUsers(page, props.pageSize).then(data => { // axios
+        //         props.setUsers(data.items); // props sended by connect
+        // })
     }
 
-    React.useEffect(()=> props.getUsersThunkCreator(),[])
+    React.useEffect(()=> props.getUsers(props.currentPage, props.pageSize),[]) // props sended by connect
     
     return (
         <Users anotherPage = {anotherPage} 
