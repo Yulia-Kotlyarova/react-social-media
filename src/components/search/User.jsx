@@ -4,6 +4,7 @@ import * as axios from 'axios';
 import { usersAPI } from '../api/api';
 
 const User = (props) => {
+    console.log(props);
     let followStyle = ["btn-second"];
 
     if (!props.followed) {

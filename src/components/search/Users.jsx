@@ -3,7 +3,6 @@ import User from './User';
 import cat from '../../img/cat-face.svg';
 
 const Users = (props) => {
-    debugger
     const selectPageStyle = 'active-page';
     const pageItem = props.pages.map(page => {
         return <li onClick = {() => props.anotherPage(page) } className = {`nav-item pagination ${page == props.currentPage && selectPageStyle }`} > {page} </li>

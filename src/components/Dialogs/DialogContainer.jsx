@@ -2,14 +2,14 @@ import React from 'react';
 import '../../style/App.css';
 import '../../style/Dialog.css';
 import Dialog from './Dialog';
-import { NavLink } from 'react-router-dom';
 import { sendMessageActCreator, onMessageChangeActCreator} from '../data/dialog-reducer';
-import { Provider, connect } from 'react-redux';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import { withAuthRedirectComponent } from '../hoc/AuthRedirect';
 
 let mapStateToProps = (state) => { // SEND OBJECT
   return {
     dialogsPage: state.dialogsPage,
-    isAuth: state.auth.isAuth
   }
 }
 
@@ -20,6 +20,8 @@ let mapDispatchToProps = (dispatch) => { // SEND FUNCTIONS
   }
 }
 
-const DialogContainer = connect(mapStateToProps, mapDispatchToProps)(Dialog);
+const DialogRedirectComponent = withAuthRedirectComponent(Dialog); // HOC for redirect
+
+const DialogContainer = connect(mapStateToProps, mapDispatchToProps)(DialogRedirectComponent);
 
 export default DialogContainer;

@@ -2,6 +2,7 @@ import React from 'react';
 import { Provider, connect, useSelector, useDispatch } from 'react-redux';
 import SearchUsers from './SearchUsers';
 import { follow, unfollow, togglePage, followProgress, getUsersThunkCreator  } from '../data/search-reduser.js';
+import { withAuthRedirectComponent } from '../hoc/AuthRedirect';
 
 let mapStateToProps = (state) => { // принимает стейт и возвращает только то, что нужно юзеру
     return {
@@ -11,11 +12,13 @@ let mapStateToProps = (state) => { // принимает стейт и возв�
         currentPage: state.usersPage.currentPage,
         isLoading: state.usersPage.isLoading,
         followingInProgress: state.usersPage.followingInProgress,
-        isAuth: state.auth.isAuth,
     }
 }
 
+const UserRedirectComponent = withAuthRedirectComponent(SearchUsers); // HOC for redirect
+
 const SearchUsersContainer = connect(mapStateToProps, 
-    { follow, unfollow, togglePage, followProgress, getUsers:getUsersThunkCreator })(SearchUsers);
+    { follow, unfollow, togglePage, followProgress, getUsers:getUsersThunkCreator })(UserRedirectComponent);
+
 
 export default SearchUsersContainer;

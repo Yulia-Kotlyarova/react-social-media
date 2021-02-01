@@ -1,20 +1,22 @@
 import React from 'react';
-import * as axios from 'axios';
 import { connect } from 'react-redux';
 import '../../style/App.css';
 import Profile from './Profile';
 import {getProfile} from '../data/profile-reducer';
-import { withRouter } from 'react-router-dom';
+import { Redirect, withRouter } from 'react-router-dom';
+import { withAuthRedirectComponent } from '../hoc/AuthRedirect';
 
 const ProfileContainer = (props) => {
-    // let userId = props.match.params.userId;
-    let userId = props.userId;
+    let userId = props.match.params.userId;
+
+    // let userId = props.userId;
     if (!userId) {
         userId = 11;
     }
     React.useEffect(()=> {
-        props.getProfile(userId) // TODO проблемы с пропсами компоненты
+        props.getProfile(userId);
     },[])
+
     return (
         <Profile isAuth ={ props.isAuth } profile = {props.profile} />
       );
@@ -22,11 +24,10 @@ const ProfileContainer = (props) => {
 
 let mapStateToProps = (state)=> ({
     profile: state.profilePage.profile,
-    isAuth: state.auth.isAuth,
-    userId: state.auth.id
-})
+    // userId: state.auth.id
+});
 
-// let urlProfileComponent = withRouter(ProfileContainer);
-// const ProfileContainer = connect(mapStateToProps, getProfile)(Profile);
+let AuthRedirectComponent = withAuthRedirectComponent(ProfileContainer); // HOC for redirect
+let withUrl = withRouter(AuthRedirectComponent);
 
-export default connect(mapStateToProps, {getProfile})(ProfileContainer);
+export default connect(mapStateToProps, {getProfile})(withUrl);
