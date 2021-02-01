@@ -3,30 +3,30 @@ import * as axios from 'axios';
 import { connect } from 'react-redux';
 import '../../style/App.css';
 import Profile from './Profile';
-import {setUserProfile} from '../data/profile-reducer';
+import {getProfile} from '../data/profile-reducer';
 import { withRouter } from 'react-router-dom';
 
 const ProfileContainer = (props) => {
-    let userId = props.match.params.userId;
+    // let userId = props.match.params.userId;
+    let userId = props.userId;
     if (!userId) {
         userId = 11;
     }
     React.useEffect(()=> {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
-            .then(response => {
-                console.log(response);
-                props.setUserProfile(response.data)
-        })
+        props.getProfile(userId) // TODO проблемы с пропсами компоненты
     },[])
     return (
-        <Profile store ={ props.store } profile = {props.profile} />
+        <Profile isAuth ={ props.isAuth } profile = {props.profile} />
       );
 }
 
 let mapStateToProps = (state)=> ({
     profile: state.profilePage.profile,
+    isAuth: state.auth.isAuth,
+    userId: state.auth.id
 })
 
-let urlProfileComponent = withRouter(ProfileContainer);
+// let urlProfileComponent = withRouter(ProfileContainer);
+// const ProfileContainer = connect(mapStateToProps, getProfile)(Profile);
 
-export default connect(mapStateToProps, {setUserProfile})(urlProfileComponent);
+export default connect(mapStateToProps, {getProfile})(ProfileContainer);

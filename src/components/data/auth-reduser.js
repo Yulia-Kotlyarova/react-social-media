@@ -1,5 +1,4 @@
-import React from 'react';
-import * as axios from 'axios';
+import { usersAPI } from '../api/api';
 const SET_USER_DATA = 'SET-USER-DATA';
 
 
@@ -25,10 +24,9 @@ export const setAuthUserData = (id, login, email) => {
     return ({type: SET_USER_DATA, data: {id, login, email}})
 };
 
-export const authThunkCreator = () => {
+export const getAuthData = () => { // thunk
     return (dispatch) => {
-        axios
-            .get(`https://social-network.samuraijs.com/api/1.0/auth/me`, {withCredentials: true})
+        usersAPI.getAuthData()
             .then(response => {
                 if(response.data.resultCode === 0) {
                     let {id, login, email} = {...response.data.data};

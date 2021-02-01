@@ -1,10 +1,6 @@
 import React from 'react';
-import { Provider, connect, useSelector, useDispatch } from 'react-redux';
-import User from './User';
 import Users from './Users';
-import * as axios from 'axios';
-import { followActCreator, unfollowActCreator, setUsersAC } from '../data/search-reduser';
-import {getUsers} from '../api/api' 
+import { Redirect } from 'react-router-dom';
 
 const SearchUsers = (props) => {
     let pageCount = Math.ceil(props.totalUserCount / props.pageSize);
@@ -15,15 +11,15 @@ const SearchUsers = (props) => {
     }
 
     let anotherPage = (page) => {
-        props.getUsers(page, props.pageSize)
-        // props.togglePage(page);
-        // getUsers(page, props.pageSize).then(data => { // axios
-        //         props.setUsers(data.items); // props sended by connect
-        // })
+        props.getUsers(page, props.pageSize) // async
     }
 
     React.useEffect(()=> props.getUsers(props.currentPage, props.pageSize),[]) // props sended by connect
     
+    if(!props.isAuth) {
+        return <Redirect to = {'/login'}/>
+    }
+
     return (
         <Users anotherPage = {anotherPage} 
         pages = {pages} users = {props.users} 

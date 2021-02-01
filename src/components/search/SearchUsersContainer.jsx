@@ -11,6 +11,7 @@ let mapStateToProps = (state) => { // принимает стейт и возв�
         currentPage: state.usersPage.currentPage,
         isLoading: state.usersPage.isLoading,
         followingInProgress: state.usersPage.followingInProgress,
+        isAuth: state.auth.isAuth,
     }
 }
 

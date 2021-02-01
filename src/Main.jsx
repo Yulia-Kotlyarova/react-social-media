@@ -9,6 +9,7 @@ import Settings from './Settings.jsx';
 import { Route, BrowserRouter } from 'react-router-dom';
 import AsideContainer from './AsideContainer';
 import SearchUsersContainer from './components/search/SearchUsersContainer';
+import Login from './components/Login/Login';
 
 function Main(props) {
   return (
@@ -21,6 +22,7 @@ function Main(props) {
             <Route path ="/dialog" render = { () => <DialogContainer/> }/>
             <Route path="/profile/:userId?" render = { () => <ProfileContainer/> }/>
             <Route path="/search_users" render = { () => <SearchUsersContainer store = {props.store}/> }/>
+            <Route path="/login" render = { () => <Login store = {props.store}/> }/>
             <Route path="/news" component = {News}/>
             <Route path="/music" component = {Music}/>
             <Route path="/settings" component = {Settings}/>

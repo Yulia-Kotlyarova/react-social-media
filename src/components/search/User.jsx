@@ -15,7 +15,7 @@ const User = (props) => {
                     <div className="col-5 d-flex flex-column justify-content-between align-items-center">
                         <NavLink to = { '/profile/' +  props.id}>
                             {
-                                props.photos.small != null ? <img src = {props.photos.small} className = "ava-friend" /> : <img src = {props.ava} className = "ava-friend" />
+                                props.photos.small != null ? <img src = {props.photos.small} className = "ava-friend" alt = "ava" /> : <img src = {props.ava} className = "ava-friend" alt = "ava"/>
                             }
                         </NavLink>
                         {
