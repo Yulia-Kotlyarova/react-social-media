@@ -4,7 +4,6 @@ import './style/App.css';
 import { NavLink } from 'react-router-dom';
 
 function Header(props) {
-  console.log(props);
   return (
     <div className="Header">
       <header className="">

@@ -125,7 +125,8 @@ aside ul {
   outline: none;
 }
 
-textarea {
+textarea,
+input {
   width: 100%;
   margin: 20px;
   padding: 10px;
@@ -133,6 +134,10 @@ textarea {
   color: white;
   outline: none;
   border-radius: 4px;
+}
+
+.cursor_pointer:hover {
+  cursor: pointer;
 }
 
 .users {

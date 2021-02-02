@@ -2,9 +2,9 @@ import React from 'react';
 import '../../style/App.css';
 import m from'../../style/Profile.module.css';
 import astronaut from '../../img/astronaut.svg';
+import ProfileStatus from './ProfileStatus.jsx';
 
 function ProfileInfo(props) {
-  console.log(props);
   if (!props.profile) {
     return <div> is loading... </div>
   }
@@ -15,12 +15,15 @@ function ProfileInfo(props) {
             <img src= {props.profile.photos.small || astronaut} className={m.mainava} alt="ava" />
           </div>
           {/* <img src= {props.profile.photos.large} className={m.ava} alt="ava" /> */}
-          <p className={m.description}>
-          <strong> {props.profile.fullName}</strong> <br/>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-          Porro ratione soluta magnam eum reprehenderit, natus cumque ab necessitatibus tempora 
-          dolorum fugiat rem, ut architecto! 
-          Vitae possimus nesciunt ex voluptas. Quos!</p>
+          <div>
+            <p className={m.description}>
+            <strong> {props.profile.fullName}</strong> <br/>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+            Porro ratione soluta magnam eum reprehenderit, natus cumque ab necessitatibus tempora 
+            dolorum fugiat rem, ut architecto! 
+            Vitae possimus nesciunt ex voluptas. Quos!</p>
+            <ProfileStatus status = "status" />
+          </div>
         </div>
       </div>
   );

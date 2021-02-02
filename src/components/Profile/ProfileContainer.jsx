@@ -31,7 +31,7 @@ let mapStateToProps = (state)=> ({
 export default compose(
     connect(mapStateToProps, {getProfile}),//4) put result in connect
     withRouter,
-    withAuthRedirectComponent // 2) put ProfileContainer in that Func and get result
+    // withAuthRedirectComponent // 2) put ProfileContainer in that Func and get result
   )(ProfileContainer)// 1) takes ProfileContainer
 
 // let AuthRedirectComponent = withAuthRedirectComponent(ProfileContainer); // HOC for redirect
