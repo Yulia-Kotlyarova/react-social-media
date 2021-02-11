@@ -1,5 +1,5 @@
 import React from 'react';
-import { addPostActCreator, onPostChangeActCreator } from '../data/profile-reducer';
+import { addPostActCreator } from '../data/profile-reducer';
 import MyPosts from './MyPosts';
 import { Provider, connect } from 'react-redux';
 
@@ -39,10 +39,6 @@ let mapStateToProps = (state) => { // SEND OBJECT, LAUNCHES WITH ANY STATE'S CHA
 
 let mapDispatchToProps = (dispatch) => { // SEND FUNCTIONS
   return {
-    updateNewPost: (newText) => {
-      let action = onPostChangeActCreator(newText);
-      dispatch(action);
-    },
     addPost: (newPost) => dispatch(addPostActCreator(newPost))
   }
 }

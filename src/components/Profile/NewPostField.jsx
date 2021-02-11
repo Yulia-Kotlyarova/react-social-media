@@ -3,9 +3,6 @@ import { Form, Field } from 'react-final-form';
 import { minValue } from '../Login/validators.js';
 
 function NewPostForm(props) {
-    // const PostItem = props.postData.map(el => <Post message = {el.message} ava = {alien} likes = {el.likeCount}/> );
-  
-    // const newPost = React.createRef();
   
     const onAddPost = (newPost) => {
       props.addPost(newPost);
@@ -16,7 +13,6 @@ function NewPostForm(props) {
         const style = isError && "form__error" ;
         return(
           <div className = "sing-in__input-box">
-            {/* <label htmlFor ="password">Password</label> */}
             <input {...input} 
               type="text" 
               placeholder= "kookooshka"

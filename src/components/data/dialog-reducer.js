@@ -5,7 +5,6 @@ import unity from '../../img/unity-hand.svg';
 import cat from '../../img/cat-face.svg';
 
 const ADD_MESSAGE = 'ADD-MESSAGE';
-const UPDATE_NEW_MESSAGE = 'UPDATE-NEW-MESSAGE';
 
 let initialState = {
     messagesData: [
@@ -28,7 +27,6 @@ const dialogReducer = (state = initialState, action) => {
 
     switch(action.type) {
         case ADD_MESSAGE: {
-          debugger
             let message = {
                 id: '4',
                 message: action.newMessageBody.messageText,
@@ -44,17 +42,11 @@ const dialogReducer = (state = initialState, action) => {
             // state.newMessageText = '';
             // return state;
         }
-        case UPDATE_NEW_MESSAGE: {
-            let stateCopy = {...state}; // copy of obj
-            stateCopy.newMessageText = action.text;
-            return stateCopy;
-        }
         default:
             return state;
     }
 }
 
 export const sendMessageActCreator = (newMessageBody) => ({type: ADD_MESSAGE, newMessageBody });
-export const onMessageChangeActCreator = (text) => ({ type: UPDATE_NEW_MESSAGE, text: text });
 
 export default dialogReducer;

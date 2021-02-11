@@ -4,7 +4,6 @@ import '../../style/App.css';
 import '../../style/Dialog.css';
 import { NavLink, Redirect } from 'react-router-dom';
 import { minValue } from '../Login/validators.js';
-import { passwordField, userName } from '../Login/fields.js';
 
 const DialogItem = (props) => {
   let path = "/dialog/" + props.id;
@@ -24,20 +23,9 @@ function Dialog(props) {
 
   let dialogsItems = state.dialogsData.map(el => <DialogItem ava = {el.ava} name = {el.name} id = {el.id}/>);
   let messagesItem = state.messagesData.map(el => <Message message = {el.message}/>);
-  let newMessageText = state.newMessageText;
-
-  const newMessage = React.createRef();
-  const sendMessage = () => {
-    props.addMessage();
-  }
-
-  const onMessageChange = () => {
-    let text = newMessage.current.value;
-    props.updateNewMessage(text);
-  }
 
   const onNewMessage = (formData) => {
-    console.log(formData);
+    console.log(props);
     props.sendMessageActCreator(formData);
   }
 
@@ -53,8 +41,8 @@ function Dialog(props) {
             { dialogsItems }
           </ul>
         </div>
-        <div className = "col-6 d-flex flex-column justify-content-between messages">
-            <MessageForm  onNewMessage = { onNewMessage } addMessage = {props.addMessage}/>
+        <div className = "col-6 d-flex flex-column justify-content-between">
+            <MessageForm  onNewMessage = { onNewMessage }/>
             {/* <textarea ref = {newMessage} value = { newMessageText }  onChange = { onMessageChange } rows = "5" className = "send-message" autoFocus = {true}> </textarea>
             <button className = "send-btn" onClick = { sendMessage } > send</button> */}
             <ul className="nav flex-column">
@@ -84,10 +72,6 @@ const newMessage = ({ input, meta }) => {
 )}
 
 const MessageForm = (props) => {
-  const onNewMessage = (formData) => {
-    console.log(formData);
-    props.addMessage(formData.messageText);
-  }
 
   return (
     <Form onSubmit={ props.onNewMessage }>

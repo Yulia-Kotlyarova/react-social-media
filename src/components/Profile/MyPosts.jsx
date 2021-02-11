@@ -9,17 +9,6 @@ import { addPostActCreator, onPostChangeActCreator } from '../data/profile-reduc
 function MyPosts(props) {
   const PostItem = props.postData.map(el => <Post message = {el.message} ava = {alien} likes = {el.likeCount}/> );
 
-  const newPost = React.createRef();
-
-  const onAddPost = () => {
-    props.addPost();
-  }
-
-  const onPostChange = () => {
-    let newText = newPost.current.value;
-    props.updateNewPost(newText);
-  }
-
   return (
     <div>
         {/* <div>
