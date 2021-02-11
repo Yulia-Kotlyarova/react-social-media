@@ -1,7 +1,10 @@
 import React from 'react';
+import { Form, Field } from 'react-final-form';
 import '../../style/App.css';
 import '../../style/Dialog.css';
 import { NavLink, Redirect } from 'react-router-dom';
+import { minValue } from '../Login/validators.js';
+import { passwordField, userName } from '../Login/fields.js';
 
 const DialogItem = (props) => {
   let path = "/dialog/" + props.id;
@@ -19,8 +22,8 @@ const Message = (props) => {
 function Dialog(props) {
   let state = props.dialogsPage ;
 
-  let dialogsItems = state.dialogsData.map(el => <DialogItem key = {`${el.name}_dialog_item`}ava = {el.ava} name = {el.name} id = {el.id}/>);
-  let messagesItem = state.messagesData.map(el => <Message key = {`${el.name}_message`} message = {el.message}/>);
+  let dialogsItems = state.dialogsData.map(el => <DialogItem ava = {el.ava} name = {el.name} id = {el.id}/>);
+  let messagesItem = state.messagesData.map(el => <Message message = {el.message}/>);
   let newMessageText = state.newMessageText;
 
   const newMessage = React.createRef();
@@ -31,6 +34,11 @@ function Dialog(props) {
   const onMessageChange = () => {
     let text = newMessage.current.value;
     props.updateNewMessage(text);
+  }
+
+  const onNewMessage = (formData) => {
+    console.log(formData);
+    props.sendMessageActCreator(formData);
   }
 
   if(!props.isAuth) {
@@ -46,8 +54,9 @@ function Dialog(props) {
           </ul>
         </div>
         <div className = "col-6 d-flex flex-column justify-content-between messages">
-            <textarea ref = {newMessage} value = { newMessageText }  onChange = { onMessageChange } rows = "5" className = "send-message" autoFocus = {true}> </textarea>
-            <button className = "send-btn" onClick = { sendMessage } > send</button>
+            <MessageForm  onNewMessage = { onNewMessage } addMessage = {props.addMessage}/>
+            {/* <textarea ref = {newMessage} value = { newMessageText }  onChange = { onMessageChange } rows = "5" className = "send-message" autoFocus = {true}> </textarea>
+            <button className = "send-btn" onClick = { sendMessage } > send</button> */}
             <ul className="nav flex-column">
               { messagesItem }
             </ul>
@@ -57,4 +66,58 @@ function Dialog(props) {
   );
 }
 
-export default Dialog;
+const newMessage = ({ input, meta }) => {
+  const isError = meta.error && meta.touched;
+  const emailStyle = isError && "form__error" ;
+  return (
+    <div>
+      <input {...input} 
+        // className = {emailStyle} 
+        rows = "5"  
+        type="text" 
+        placeholder="go Minecraft?"
+        id = "new_message"
+        autoFocus = {true}
+      />
+      { isError && <div className = "form__error">{meta.error}</div> }
+    </div>
+)}
+
+const MessageForm = (props) => {
+  const onNewMessage = (formData) => {
+    console.log(formData);
+    props.addMessage(formData.messageText);
+  }
+
+  return (
+    <Form onSubmit={ props.onNewMessage }>
+      {({ handleSubmit, form, submitting, pristine, values }) => (
+        <form onSubmit = { handleSubmit }>
+          <Field name="messageText"  
+            component="textarea"
+            validate={minValue(1)}
+          >
+            { newMessage }
+          </Field>
+          <button 
+            className = "send-btn" 
+            type="submit" 
+            // disabled={submitting || !values.messageText }
+            >
+              send
+          </button>
+        </form>
+      )}
+    </Form>
+  )
+
+  // return (
+  //   <div >
+  //     <textarea ref = {newMessage} value = { newMessageText }  onChange = { onMessageChange } rows = "5" className = "send-message" autoFocus = {true}> </textarea>
+  //     <button className = "send-btn" onClick = { sendMessage } > send</button>
+  //   </div>
+  // )
+}
+
+export default MessageForm;
+export { Dialog };

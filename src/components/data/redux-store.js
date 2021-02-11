@@ -4,6 +4,7 @@ import dialogReducer from './dialog-reducer.js';
 import sidebarReducer from './sidebar-reducer.js';
 import searchReducer from './search-reduser';
 import authReduser from './auth-reduser.js';
+import formReducer from './form-reducer.js';
 import thunkMiddleware from 'redux-thunk';
 
 const reducers = combineReducers({
@@ -11,7 +12,8 @@ const reducers = combineReducers({
     dialogsPage: dialogReducer,
     linkData: sidebarReducer,
     usersPage: searchReducer,
-    auth: authReduser
+    auth: authReduser,
+    form: formReducer,
 });  // STATE
 
 const store = createStore(

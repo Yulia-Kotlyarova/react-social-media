@@ -1,6 +1,6 @@
 import '../../style/App.css';
 import '../../style/Dialog.css';
-import Dialog from './Dialog';
+import { Dialog } from './Dialog';
 import { sendMessageActCreator, onMessageChangeActCreator} from '../data/dialog-reducer';
 import { connect } from 'react-redux';
 import { withAuthRedirectComponent } from '../hoc/AuthRedirect';

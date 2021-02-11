@@ -20,9 +20,7 @@ let initialState = {
       { id: '3', name: 'Senya', ava: `${jelly}` },
       { id: '4', name: 'Fatty Cat', ava: `${unity}` },
       { id: '5', name: 'Murrr', ava: `${cat}` },
-    ],
-
-    newMessageText: 'how low?'
+    ]
 
   }
 
@@ -30,15 +28,16 @@ const dialogReducer = (state = initialState, action) => {
 
     switch(action.type) {
         case ADD_MESSAGE: {
+          debugger
             let message = {
                 id: '4',
-                message: state.newMessageText,
+                message: action.newMessageBody.messageText,
               };
 
             let stateCopy = {...state}; // CREATE COPY OF STATE TO WORK WITH
             stateCopy.messagesData = [...state.messagesData]; //copy of arr
             stateCopy.messagesData.push(message);
-            stateCopy.newMessageText = '';
+            // stateCopy.newMessageText = '';
             return stateCopy;
             
             // state.messagesData.push(message);
@@ -55,7 +54,7 @@ const dialogReducer = (state = initialState, action) => {
     }
 }
 
-export const sendMessageActCreator = () => ({type: ADD_MESSAGE });
+export const sendMessageActCreator = (newMessageBody) => ({type: ADD_MESSAGE, newMessageBody });
 export const onMessageChangeActCreator = (text) => ({ type: UPDATE_NEW_MESSAGE, text: text });
 
 export default dialogReducer;

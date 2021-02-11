@@ -43,7 +43,7 @@ let mapDispatchToProps = (dispatch) => { // SEND FUNCTIONS
       let action = onPostChangeActCreator(newText);
       dispatch(action);
     },
-    addPost: () => dispatch(addPostActCreator())
+    addPost: (newPost) => dispatch(addPostActCreator(newPost))
   }
 }
 

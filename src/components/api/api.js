@@ -2,10 +2,10 @@ import * as axios from 'axios';
 
 const instance = axios.create({
     withCredentials: true,
-    baseURL: 'https://social-network.samuraijs.com/api/1.0/', // auto push to link
-    "API-KEY":'b785b553-c9d8-4045-8027-f8b9d6fe1d19',
+    baseURL: 'https://social-network.samuraijs.com/api/1.0/',
+    "API-KEY":'28edbee1-c38f-4aa9-98db-ce5f71f20de0',
 
-})
+});
 
 export const usersAPI = {
     getUsers(page = 1, pageSize = 10) {
@@ -23,10 +23,24 @@ export const usersAPI = {
     },
 
     getProfile(userId) {
-        return instance.get(`profile/${userId}`)
+        console.warn('use old method, please, use profileAPI');
+        return profileAPI.getProfile(userId);
     },
 
     getAuthData() {
         return instance.get(`auth/me`)
     }
-}
+};
+
+
+export const profileAPI = {
+    getProfile(userId) {
+        return instance.get(`profile/${userId}`)
+    },
+    getStatus(userId) {
+        return instance.get(`profile/status/${userId}`)
+    },
+    upDateStatus(status) {
+        return instance.put(`profile/status`, { status: status })
+    }
+};

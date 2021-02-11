@@ -2,7 +2,7 @@ import React from 'react';
 import '../../style/App.css';
 import m from'../../style/Profile.module.css';
 import astronaut from '../../img/astronaut.svg';
-import ProfileStatus from './ProfileStatus.jsx';
+import ProfileStatus, {ProfileStatusHook} from './ProfileStatus.jsx';
 
 function ProfileInfo(props) {
   if (!props.profile) {
@@ -22,7 +22,8 @@ function ProfileInfo(props) {
             Porro ratione soluta magnam eum reprehenderit, natus cumque ab necessitatibus tempora 
             dolorum fugiat rem, ut architecto! 
             Vitae possimus nesciunt ex voluptas. Quos!</p>
-            <ProfileStatus status = "status" />
+            {/* <ProfileStatus status = { props.status } upDateStatus = { props.upDateStatus }/> */}
+            <ProfileStatusHook status = { props.status } upDateStatus = { props.upDateStatus }/>
           </div>
         </div>
       </div>
